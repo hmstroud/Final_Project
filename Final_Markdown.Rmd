@@ -1,0 +1,24 @@
+---
+title: "Final_Project"
+author: "Hannah Stroud"
+date: "November 25, 2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Reading in and playing with the data
+
+```{r}
+library(readr)
+library(tidyverse)
+library(dplyr)
+library(ggplot2)
+```
+
+###Climate Ready Boston Social Vulnerability Data
+```{r}
+SoVI <- read_csv("./Data/Climate_Ready_Boston_Social_Vulnerability.csv")
+```
