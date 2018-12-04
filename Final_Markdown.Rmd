@@ -11,7 +11,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Reading in and playing with the data
 
-```{r}
+```{r,chunk- Libraries, echo=TRUE, cache=TRUE, warning=FALSE, message=FALSE}
 library(readr)
 library(tidyverse)
 library(dplyr)
@@ -19,6 +19,78 @@ library(ggplot2)
 ```
 
 ###Climate Ready Boston Social Vulnerability Data
-```{r}
-SoVI <- read_csv("./Data/Climate_Ready_Boston_Social_Vulnerability.csv")
+```{r, Importing Data- label, echo=TRUE, warning=FALSE}
+SoVI_neighborhood <- read.csv("./Data/CRB_Vul_Sum.csv")%>%
+  as.tibble()   
+SoVI_centract <- read.csv("./Data/Climate_Ready_Boston_Social_Vulnerability.csv") %>% 
+  as.tibble()
+     #two scale analysis as suggested by Zimmerman et al 1990 
+```
+
+####Basic Summary Statistics 
+```{r, chunk- Data Cleaning, echo=TRUE, warning=FALSE}
+#Adding percentages to total counts 
+SoVI_neighborhood <- SoVI_neighborhood %>% rename(Housing_units= HU100_RE,
+                             Tract_pop_count=POP100_RE, 
+                             Lmd_Eng=LEP,
+                             POC=POC2)  %>%  #POC= people of color 
+                            mutate(Ppl_per_house=  Tract_pop_count/Housing_units, 
+                                   Per_POC= POC/Tract_pop_count,
+                                   Per_Med= MedIllnes/Tract_pop_count,
+                                   Per_child= TotChild/Tract_pop_count,
+                                   Per_eld= OlderAdult/Tract_pop_count,
+                                   Per_LowInc= Low_to_No/Tract_pop_count,
+                                   Per_Lmt_Eng= Lmd_Eng/Tract_pop_count,
+                                   Per_Dis= TotDis/Tract_pop_count)
+         
+SoVI_centract <- SoVI_centract %>% rename(Housing_units=HU100_RE,
+                         Tract_pop_count=POP100_RE,
+                         Lmd_Eng=LEP,
+                         POC=POC2) %>% 
+                    mutate(Ppl_per_house= Tract_pop_count/Housing_units, 
+                                   Per_POC= POC/Tract_pop_count,
+                                   Per_Med= MedIllnes/Tract_pop_count,
+                                   Per_child= TotChild/Tract_pop_count,
+                                   Per_eld= OlderAdult/Tract_pop_count,
+                                   Per_LowInc= Low_to_No/Tract_pop_count,
+                                   Per_Lmt_Eng= Lmd_Eng/Tract_pop_count,
+                                   Per_Dis= TotDis/Tract_pop_count)
+#City averages for comparison 
+Boston_Summary <- SoVI_centract %>% 
+                    summarise(Tot_Pop= sum(Tract_pop_count),
+                              Tot_Med= sum(MedIllnes),
+                              Tot_Dis= sum(TotDis),
+                              Tot_LEng= sum(Lmd_Eng),
+                              Tot_LowInc= sum(Low_to_No),
+                              Tot_POC= sum(POC),
+                              Tot_Child= sum(TotChild),
+                              Tot_Eld= sum(OlderAdult),
+                              Tot_House= sum(Housing_units)) %>% 
+                    mutate(Per_POC= Tot_POC/Tot_Pop,
+                                  Per_Med= Tot_Med/Tot_Pop,
+                                  Per_child= Tot_Child/Tot_Pop,
+                                  Per_eld= Tot_Eld/Tot_Pop,
+                                  Per_LowInc= Tot_LowInc/Tot_Pop,
+                                  Per_Lmt_Eng= Tot_LEng/Tot_Pop,
+                                  Per_Dis= Tot_Dis/Tot_Pop)
+
+Boston_Neigh_Sum <- SoVI_neighborhood %>% 
+                    summarise(Avg_Med= mean(Per_Med),
+                              Avg_Child= mean(Per_child),
+                              Avg_Dis= mean(Per_Dis),
+                              Avg_eld= mean(Per_eld),
+                              Avg_LowInc= mean(Per_LowInc),
+                              Avg_LEng= mean(Per_Lmt_Eng),
+                              Avg_POC= mean(Per_POC),
+                              Avg_OpenSpc= mean(Open.Space.Count),
+                              Avg_AreaOpSp= mean(Open.Space.Area.in.acres))
+
+```
+
+```{r, chunk- Neighborhood level, echo=TRUE, warning=FALSE}
+SoVI_neighborhood <- SoVI_neighborhood %>%
+  mutate(Per_OpenSpace = Open.Space.Area.in.acres/AREA_ACRES)  
+#some have over 100% open space- has to do with how I got GIS data and open space that overlapped neighborhoods was counted for both 
+
+
 ```
