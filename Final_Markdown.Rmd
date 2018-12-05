@@ -22,9 +22,14 @@ library(ggplot2)
 ```{r, Importing Data- label, echo=TRUE, warning=FALSE}
 SoVI_neighborhood <- read.csv("./Data/CRB_Vul_Sum.csv")%>%
   as.tibble()   
-SoVI_centract <- read.csv("./Data/Climate_Ready_Boston_Social_Vulnerability.csv") %>% 
-  as.tibble()
+CRB_Attributes <- read.csv("./Data/Climate_Ready_Boston_Social_Vulnerability.csv")
      #two scale analysis as suggested by Zimmerman et al 1990 
+#Reading in CDC composite score 
+Index <- read.csv("./Data/SoVI2010_MA.csv")
+
+
+#Joining CRB data with CDC's 
+combined <- left_join(CRB_Attributes, Index, by="GEOID10")
 ```
 
 ####Basic Summary Statistics 
@@ -43,7 +48,7 @@ SoVI_neighborhood <- SoVI_neighborhood %>% rename(Housing_units= HU100_RE,
                                    Per_Lmt_Eng= Lmd_Eng/Tract_pop_count,
                                    Per_Dis= TotDis/Tract_pop_count)
          
-SoVI_centract <- SoVI_centract %>% rename(Housing_units=HU100_RE,
+CRB_Attributes <- CRB_Attributes %>% rename(Housing_units=HU100_RE,
                          Tract_pop_count=POP100_RE,
                          Lmd_Eng=LEP,
                          POC=POC2) %>% 
@@ -56,7 +61,7 @@ SoVI_centract <- SoVI_centract %>% rename(Housing_units=HU100_RE,
                                    Per_Lmt_Eng= Lmd_Eng/Tract_pop_count,
                                    Per_Dis= TotDis/Tract_pop_count)
 #City averages for comparison 
-Boston_Summary <- SoVI_centract %>% 
+Boston_Summary <- CRB_Attributes %>% 
                     summarise(Tot_Pop= sum(Tract_pop_count),
                               Tot_Med= sum(MedIllnes),
                               Tot_Dis= sum(TotDis),
@@ -91,6 +96,7 @@ Boston_Neigh_Sum <- SoVI_neighborhood %>%
 SoVI_neighborhood <- SoVI_neighborhood %>%
   mutate(Per_OpenSpace = Open.Space.Area.in.acres/AREA_ACRES)  
 #some have over 100% open space- has to do with how I got GIS data and open space that overlapped neighborhoods was counted for both 
-
-
 ```
+
+
+###Where are the more vulnerable spots?
