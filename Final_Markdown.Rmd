@@ -16,15 +16,22 @@ library(readr)
 library(tidyverse)
 library(dplyr)
 library(ggplot2)
+library(tidyr)
+library(broom)
 ```
+
+##Project 
+1. Where are Boston's vulnerable populations? Does examing different levels of scale change where the most vulnerable spots are?
+2. What characteristics contribute most to those vulnerable areas?
+3. Are those socially vulnerable populations more physically exposed to climate change hazards than others?
+4. Are those socially vulnerable populations being targeted by the city equitably in terms of adaptation planning?
 
 ###Climate Ready Boston Social Vulnerability Data
 ```{r, Importing Data- label, echo=TRUE, warning=FALSE}
-SoVI_neighborhood <- read.csv("./Data/CRB_Vul_Sum.csv")%>%
-  as.tibble()   
+SoVI_neighborhood <- read.csv("./Data/CRB_Vul_Sum.csv")
 CRB_Attributes <- read.csv("./Data/Climate_Ready_Boston_Social_Vulnerability.csv")
-     #two scale analysis as suggested by Zimmerman et al 1990 
-#Reading in CDC composite score 
+    
+#Reading in CDC composite score, uses more factors than Climate Ready Boston 
 Index <- read.csv("./Data/SoVI2010_MA.csv")
 
 
@@ -32,71 +39,131 @@ Index <- read.csv("./Data/SoVI2010_MA.csv")
 combined <- left_join(CRB_Attributes, Index, by="GEOID10")
 ```
 
-####Basic Summary Statistics 
+####Summary Statistics 
 ```{r, chunk- Data Cleaning, echo=TRUE, warning=FALSE}
 #Adding percentages to total counts 
-SoVI_neighborhood <- SoVI_neighborhood %>% rename(Housing_units= HU100_RE,
-                             Tract_pop_count=POP100_RE, 
-                             Lmd_Eng=LEP,
-                             POC=POC2)  %>%  #POC= people of color 
-                            mutate(Ppl_per_house=  Tract_pop_count/Housing_units, 
-                                   Per_POC= POC/Tract_pop_count,
-                                   Per_Med= MedIllnes/Tract_pop_count,
-                                   Per_child= TotChild/Tract_pop_count,
-                                   Per_eld= OlderAdult/Tract_pop_count,
-                                   Per_LowInc= Low_to_No/Tract_pop_count,
-                                   Per_Lmt_Eng= Lmd_Eng/Tract_pop_count,
-                                   Per_Dis= TotDis/Tract_pop_count)
+SoVI_neighborhood <- SoVI_neighborhood[-c(9),] %>%   #getting rid of Harbor Island- no one lives ther
+                            mutate(Ppl_per_house=  POP100_RE/HU100_RE, 
+                                   Per_POC= POC2/POP100_RE,
+                                   Per_Med= MedIllnes/POP100_RE,
+                                   Per_child= TotChild/POP100_RE,
+                                   Per_eld= OlderAdult/POP100_RE,
+                                   Per_LI= Low_to_No/POP100_RE,
+                                   Per_Lmt_Eng= LEP/POP100_RE,
+                                   Per_Dis= TotDis/POP100_RE,
+                                   Per_OS = Open.Space.Area.in.acres/AREA_ACRES)
+#some have over 100% open space- has to do with how I got GIS data and open space that overlapped neighborhoods was counted for both 
          
-CRB_Attributes <- CRB_Attributes %>% rename(Housing_units=HU100_RE,
-                         Tract_pop_count=POP100_RE,
-                         Lmd_Eng=LEP,
-                         POC=POC2) %>% 
-                    mutate(Ppl_per_house= Tract_pop_count/Housing_units, 
-                                   Per_POC= POC/Tract_pop_count,
-                                   Per_Med= MedIllnes/Tract_pop_count,
-                                   Per_child= TotChild/Tract_pop_count,
-                                   Per_eld= OlderAdult/Tract_pop_count,
-                                   Per_LowInc= Low_to_No/Tract_pop_count,
-                                   Per_Lmt_Eng= Lmd_Eng/Tract_pop_count,
-                                   Per_Dis= TotDis/Tract_pop_count)
+CRB_Attributes <- CRB_Attributes[-c(151),] %>%   #rid Harbod Islands again
+                    mutate(Ppl_per_house=  POP100_RE/HU100_RE, 
+                                   Per_POC= POC2/POP100_RE,
+                                   Per_Med= MedIllnes/POP100_RE,
+                                   Per_child= TotChild/POP100_RE,
+                                   Per_eld= OlderAdult/POP100_RE,
+                                   Per_LI= Low_to_No/POP100_RE,
+                                   Per_Lmt_Eng= LEP/POP100_RE,
+                                   Per_Dis= TotDis/POP100_RE)
 #City averages for comparison 
 Boston_Summary <- CRB_Attributes %>% 
-                    summarise(Tot_Pop= sum(Tract_pop_count),
+                    summarise(Tot_Pop= sum(POP100_RE),
                               Tot_Med= sum(MedIllnes),
                               Tot_Dis= sum(TotDis),
-                              Tot_LEng= sum(Lmd_Eng),
+                              Tot_LEP= sum(LEP),
                               Tot_LowInc= sum(Low_to_No),
-                              Tot_POC= sum(POC),
+                              Tot_POC= sum(POC2),
                               Tot_Child= sum(TotChild),
-                              Tot_Eld= sum(OlderAdult),
-                              Tot_House= sum(Housing_units)) %>% 
-                    mutate(Per_POC= Tot_POC/Tot_Pop,
+                              Tot_Eld= sum(OlderAdult)) %>% 
+                    mutate(       Per_POC= Tot_POC/Tot_Pop,
                                   Per_Med= Tot_Med/Tot_Pop,
-                                  Per_child= Tot_Child/Tot_Pop,
-                                  Per_eld= Tot_Eld/Tot_Pop,
-                                  Per_LowInc= Tot_LowInc/Tot_Pop,
-                                  Per_Lmt_Eng= Tot_LEng/Tot_Pop,
-                                  Per_Dis= Tot_Dis/Tot_Pop)
+                                  Per_Dis= Tot_Dis/Tot_Pop,
+                                  Per_Child= Tot_Child/Tot_Pop,
+                                  Per_Eld= Tot_Eld/Tot_Pop,
+                                  Per_LI= Tot_LowInc/Tot_Pop,
+                                  Per_LEP= Tot_LEP/Tot_Pop)
+                                  
 
-Boston_Neigh_Sum <- SoVI_neighborhood %>% 
-                    summarise(Avg_Med= mean(Per_Med),
-                              Avg_Child= mean(Per_child),
-                              Avg_Dis= mean(Per_Dis),
-                              Avg_eld= mean(Per_eld),
-                              Avg_LowInc= mean(Per_LowInc),
-                              Avg_LEng= mean(Per_Lmt_Eng),
-                              Avg_POC= mean(Per_POC),
+  Boston_Neigh_Sum  <- SoVI_neighborhood %>%summarise(Avg_Med= mean(Per_Med), Avg_Dis= mean(Per_Dis),
+                                                      Avg_Child= mean(Per_child),
+                              Avg_eld= mean(Per_eld), Avg_LowInc= mean(Per_LI),
+                              Avg_LEng= mean(Per_Lmt_Eng), Avg_POC= mean(Per_POC), 
                               Avg_OpenSpc= mean(Open.Space.Count),
-                              Avg_AreaOpSp= mean(Open.Space.Area.in.acres))
-
-```
-
-```{r, chunk- Neighborhood level, echo=TRUE, warning=FALSE}
-SoVI_neighborhood <- SoVI_neighborhood %>%
-  mutate(Per_OpenSpace = Open.Space.Area.in.acres/AREA_ACRES)  
-#some have over 100% open space- has to do with how I got GIS data and open space that overlapped neighborhoods was counted for both 
+                              Avg_OPratio= mean(Per_OS),
+                            
+                              SD_Med= sd(Per_Med),SD_Dis= sd(Per_Dis), SD_ch= sd(Per_child), 
+                              SD_ed= sd(Per_eld),SD_LI= sd(Per_LI),
+                              SD_LEP= sd(Per_Lmt_Eng), SD_POC= sd(Per_POC),
+                              SD_OP= sd(Open.Space.Count),SD_OPratio= sd(Per_OS)) 
+#Rearrange  
+rearrange <- gather(Boston_Neigh_Sum, key= "Value", 1:18)
+Avg <- rearrange[c(1:9),c(1:2)] %>% rename(Mean= "1:18", Stat= Value)
+StdDev <- rearrange[c(10:18),c(1:2)]%>% rename(SD="1:18", Stat= Value)
+B_Sum <- cbind(Avg, StdDev) 
 ```
 
 
 ###Where are the more vulnerable spots?
+
+```{r, Z scores- label, echo=TRUE, warning=FALSE}
+SoVI_neighborhood <- SoVI_neighborhood%>% mutate(
+                                            ZMed= scale(Per_Med), 
+                                            ZChild= scale(Per_child),
+                                            ZEld= scale(Per_eld),
+                                            ZLowI= scale(Per_LI),
+                                            ZLEP= scale(Per_Lmt_Eng),
+                                            ZDis= scale(Per_Dis),
+                                            ZPOC= scale(Per_POC),
+                                            ZOpenSp= scale(Per_OS),
+                                            ZOP_number= scale(Open.Space.Count))
+
+#Visualize 
+Med<- ggplot(data= SoVI_neighborhood, aes(x= Neighborhood, y=ZMed, color =Per_Med)) + geom_point()+scale_color_gradient(low = "blue", high = "red") + geom_hline(yintercept = 0, color="purple")
+
+Child <- ggplot(data= SoVI_neighborhood, aes(x= Neighborhood, y=ZChild, color =Per_child)) + geom_point()+scale_color_gradient(low = "blue", high = "red") + geom_hline(yintercept = 0, color="purple")
+
+Eld <- ggplot(data= SoVI_neighborhood, aes(x= Neighborhood, y=ZEld, color =Per_eld)) + geom_point()+scale_color_gradient(low = "blue", high = "red") + geom_hline(yintercept = 0, color="purple")
+
+LowI<- ggplot(data= SoVI_neighborhood, aes(x= Neighborhood, y=ZLowI, color =Per_LI)) + geom_point()+scale_color_gradient(low = "blue", high = "red") + geom_hline(yintercept = 0, color="purple")
+
+LEP <- ggplot(data= SoVI_neighborhood, aes(x= Neighborhood, y=ZLEP, color =Per_Lmt_Eng)) + geom_point()+scale_color_gradient(low = "blue", high = "red") + geom_hline(yintercept = 0, color="purple")
+
+Dis <- ggplot(data= SoVI_neighborhood, aes(x= Neighborhood, y=ZDis, color =Per_Dis)) + geom_point()+scale_color_gradient(low = "blue", high = "red") + geom_hline(yintercept = 0, color="purple")
+
+POC <- ggplot(data= SoVI_neighborhood, aes(x= Neighborhood, y=ZPOC, color =Per_POC)) + geom_point()+scale_color_gradient(low = "blue", high = "red") + geom_hline(yintercept = 0, color="purple")
+
+POSp <- ggplot(data= SoVI_neighborhood, aes(x= Neighborhood, y=ZOpenSp, color =Per_OS)) + geom_point()+scale_color_gradient(low = "red", high = "green") + geom_hline(yintercept = 0, color="purple")
+
+POScnt <- ggplot(data= SoVI_neighborhood, aes(x= Neighborhood, y=ZOP_number, color =Open.Space.Count)) + geom_point()+scale_color_gradient(low = "red", high = "green") + geom_hline(yintercept = 0, color="purple")
+
+library(gridExtra)
+grid.arrange(Med, Child, Eld, LowI, LEP, Dis, POC, POSp, POScnt, ncol= 3)   #glitching display- not all same size 
+```
+
+```{r}
+#Census Tract Level 
+CRB_Attributes <- CRB_Attributes %>% mutate(ZMed= scale(Per_Med), 
+                                            ZChild= scale(Per_child),
+                                            ZEld= scale(Per_eld),
+                                            ZLowI= scale(Per_LI),
+                                            ZLEP= scale(Per_Lmt_Eng),
+                                            ZDis= scale(Per_Dis), 
+                                            ZPOC= scale(Per_POC))  
+#export for GIS visualization 
+write.csv(CRB_Attributes,file= "CRB_stats.csv")
+#Strong arming it 
+#ZMED <- scale(CRB_Attributes$Per_Med)
+#ZChild <- scale(CRB_Attributes$Per_child)
+#ZEld <- scale(CRB_Attributes$Per_eld)
+#ZLowI <- scale(CRB_Attributes$Per_LI)
+#ZLEP <- scale(CRB_Attributes$Per_Lmt_Eng)
+#ZDIS <- scale(CRB_Attributes$Per_Dis)
+#ZPOC <- scale(CRB_Attributes$Per_POC)
+
+#CRB_Attributes <- cbind(CRB_Attributes, ZMED, ZChild, ZEld, ZLowI, ZDIS, ZPOC) %>% 
+ # rename(zmed= ZMED)
+
+#Visualize it 
+ 
+```
+
+
+
