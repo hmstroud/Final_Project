@@ -18,6 +18,7 @@ library(dplyr)
 library(ggplot2)
 library(tidyr)
 library(broom)
+library(gridExtra)
 ```
 
 ##Project 
@@ -33,10 +34,6 @@ CRB_Attributes <- read.csv("./Data/Climate_Ready_Boston_Social_Vulnerability.csv
     
 #Reading in CDC composite score, uses more factors than Climate Ready Boston 
 Index <- read.csv("./Data/SoVI2010_MA.csv")
-
-
-#Joining CRB data with CDC's 
-combined <- left_join(CRB_Attributes, Index, by="GEOID10")
 ```
 
 ####Summary Statistics 
@@ -105,15 +102,26 @@ B_Sum <- cbind(Avg, StdDev)
 
 ```{r, Z scores- label, echo=TRUE, warning=FALSE}
 SoVI_neighborhood <- SoVI_neighborhood%>% mutate(
-                                            ZMed= scale(Per_Med), 
-                                            ZChild= scale(Per_child),
-                                            ZEld= scale(Per_eld),
-                                            ZLowI= scale(Per_LI),
-                                            ZLEP= scale(Per_Lmt_Eng),
-                                            ZDis= scale(Per_Dis),
-                                            ZPOC= scale(Per_POC),
-                                            ZOpenSp= scale(Per_OS),
-                                            ZOP_number= scale(Open.Space.Count))
+                                            ZMed=as.numeric(scale(Per_Med)),
+                                            ZChild= as.numeric(scale(Per_child)),
+                                            ZEld= as.numeric(scale(Per_eld)),
+                                            ZLowI= as.numeric(scale(Per_LI)),
+                                            ZLEP= as.numeric(scale(Per_Lmt_Eng)),
+                                            ZDis= as.numeric(scale(Per_Dis)), 
+                                            ZPOC= as.numeric(scale(Per_POC)),
+                                            ZOpenSp= as.numeric(scale(Per_OS)),
+                                            ZOP_number= as.numeric(scale(Open.Space.Count)))
+#Top Z scores 
+Top_NMed <- filter(SoVI_neighborhood, ZMed >= 1.5)
+Top_NChild <- filter(SoVI_neighborhood, ZChild >= 1.5)
+Top_NDis <- filter(SoVI_neighborhood, ZDis >= 2)
+Top_NPOC <- filter(SoVI_neighborhood, ZPOC >= 1.5)
+Top_NLEP <- filter(SoVI_neighborhood, ZLEP >= 1.5)
+Top_NLI <- filter(SoVI_neighborhood, ZLowI >= 1.5)
+Top_NEld <- filter(SoVI_neighborhood, ZEld >= 1.5)
+LeastOP<- filter(SoVI_neighborhood, ZOP_number<= -1)
+
+#write.csv(SoVI_neighborhood,file= "Neighborhood_stats.csv") 
 
 #Visualize 
 Med<- ggplot(data= SoVI_neighborhood, aes(x= Neighborhood, y=ZMed, color =Per_Med)) + geom_point()+scale_color_gradient(low = "blue", high = "red") + geom_hline(yintercept = 0, color="purple")
@@ -134,36 +142,36 @@ POSp <- ggplot(data= SoVI_neighborhood, aes(x= Neighborhood, y=ZOpenSp, color =P
 
 POScnt <- ggplot(data= SoVI_neighborhood, aes(x= Neighborhood, y=ZOP_number, color =Open.Space.Count)) + geom_point()+scale_color_gradient(low = "red", high = "green") + geom_hline(yintercept = 0, color="purple")
 
-library(gridExtra)
-grid.arrange(Med, Child, Eld, LowI, LEP, Dis, POC, POSp, POScnt, ncol= 3)   #glitching display- not all same size 
+grid.arrange(Med, Child, Eld, LowI, LEP, Dis, POC, POSp, POScnt, ncol= 3)
 ```
 
 ```{r}
-#Census Tract Level 
-CRB_Attributes <- CRB_Attributes %>% mutate(ZMed= scale(Per_Med), 
-                                            ZChild= scale(Per_child),
-                                            ZEld= scale(Per_eld),
-                                            ZLowI= scale(Per_LI),
-                                            ZLEP= scale(Per_Lmt_Eng),
-                                            ZDis= scale(Per_Dis), 
-                                            ZPOC= scale(Per_POC))  
+#Census Tract Level #18-24
+CRB_Attributes <- CRB_Attributes %>% mutate(ZMed=as.numeric(scale(Per_Med)),
+                                            ZChild= as.numeric(scale(Per_child)),
+                                            ZEld= as.numeric(scale(Per_eld)),
+                                            ZLowI= as.numeric(scale(Per_LI)),
+                                            ZLEP= as.numeric(scale(Per_Lmt_Eng)),
+                                            ZDis= as.numeric(scale(Per_Dis)), 
+                                            ZPOC= as.numeric(scale(Per_POC)))   
+                                                 
+   
 #export for GIS visualization 
-write.csv(CRB_Attributes,file= "CRB_stats.csv")
-#Strong arming it 
-#ZMED <- scale(CRB_Attributes$Per_Med)
-#ZChild <- scale(CRB_Attributes$Per_child)
-#ZEld <- scale(CRB_Attributes$Per_eld)
-#ZLowI <- scale(CRB_Attributes$Per_LI)
-#ZLEP <- scale(CRB_Attributes$Per_Lmt_Eng)
-#ZDIS <- scale(CRB_Attributes$Per_Dis)
-#ZPOC <- scale(CRB_Attributes$Per_POC)
-
-#CRB_Attributes <- cbind(CRB_Attributes, ZMED, ZChild, ZEld, ZLowI, ZDIS, ZPOC) %>% 
- # rename(zmed= ZMED)
-
-#Visualize it 
- 
+#write.csv(CRB_Attributes,file= "CRB_stats.csv")
+Top_Med <- filter(CRB_Attributes, ZMed >= 2)
+Top_Child <- filter(CRB_Attributes, ZChild >= 2)
+Top_Dis <- filter(CRB_Attributes, ZDis >= 2)
+Top_POC <- filter(CRB_Attributes, ZPOC >= 1.5)
+Top_LEP <- filter(CRB_Attributes, ZLEP >= 2)
+Top_LI <- filter(CRB_Attributes, ZLowI >= 2)
+Top_Eld <- filter(CRB_Attributes, ZEld >= 2)
 ```
 
+```{r}
+#Joining CRB data with CDC's 
+combined <- left_join(CRB_Attributes, Index, by="GEOID10")
 
+cor.test()
+
+```
 
