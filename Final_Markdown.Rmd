@@ -19,6 +19,7 @@ library(ggplot2)
 library(tidyr)
 library(broom)
 library(gridExtra)
+library(kableExtra)
 ```
 
 ##Project 
@@ -28,7 +29,7 @@ library(gridExtra)
 4. Are those socially vulnerable populations being targeted by the city equitably in terms of adaptation planning?
 
 ###Climate Ready Boston Social Vulnerability Data
-```{r, Importing Data- label, echo=TRUE, warning=FALSE}
+```{r Importing Data, echo=TRUE, warning=FALSE}
 SoVI_neighborhood <- read.csv("./Data/CRB_Vul_Sum.csv")
 CRB_Attributes <- read.csv("./Data/Climate_Ready_Boston_Social_Vulnerability.csv")
     
@@ -37,7 +38,7 @@ Index <- read.csv("./Data/SoVI2010_MA.csv")
 ```
 
 ####Summary Statistics 
-```{r, chunk- Data Cleaning, echo=TRUE, warning=FALSE}
+```{r Calculating Percentages, echo=TRUE, warning=FALSE}
 #Adding percentages to total counts 
 SoVI_neighborhood <- SoVI_neighborhood[-c(9),] %>%   #getting rid of Harbor Island- no one lives ther
                             mutate(Ppl_per_house=  POP100_RE/HU100_RE, 
@@ -60,6 +61,9 @@ CRB_Attributes <- CRB_Attributes[-c(151),] %>%   #rid Harbod Islands again
                                    Per_LI= Low_to_No/POP100_RE,
                                    Per_Lmt_Eng= LEP/POP100_RE,
                                    Per_Dis= TotDis/POP100_RE)
+```
+
+```{r City Wide Stats}
 #City averages for comparison 
 Boston_Summary <- CRB_Attributes %>% 
                     summarise(Tot_Pop= sum(POP100_RE),
@@ -89,19 +93,22 @@ Boston_Summary <- CRB_Attributes %>%
                               SD_Med= sd(Per_Med),SD_Dis= sd(Per_Dis), SD_ch= sd(Per_child), 
                               SD_ed= sd(Per_eld),SD_LI= sd(Per_LI),
                               SD_LEP= sd(Per_Lmt_Eng), SD_POC= sd(Per_POC),
-                              SD_OP= sd(Open.Space.Count),SD_OPratio= sd(Per_OS)) 
+                              SD_OP= sd(Open.Space.Count),SD_OPratio= sd(Per_OS)) %>% 
+                                mutate(area= "Boston")
 #Rearrange  
 rearrange <- gather(Boston_Neigh_Sum, key= "Value", 1:18)
 Avg <- rearrange[c(1:9),c(1:2)] %>% rename(Mean= "1:18", Stat= Value)
 StdDev <- rearrange[c(10:18),c(1:2)]%>% rename(SD="1:18", Stat= Value)
 B_Sum <- cbind(Avg, StdDev) 
+
+B_Sum %>% kable() %>% kable_styling(bootstrap_options = "striped", full_width = F, position = "left") %>% column_spec(1, bold = T, border_right = T) %>% column_spec(3, bold=T)
 ```
 
 
 ###Where are the more vulnerable spots?
 
-```{r, Z scores- label, echo=TRUE, warning=FALSE}
-SoVI_neighborhood <- SoVI_neighborhood%>% mutate(
+```{r Computing Neighborhood Scale Z Scores, echo=TRUE, warning=FALSE}
+SoVI_neighborhood <- SoVI_neighborhood %>% mutate(
                                             ZMed=as.numeric(scale(Per_Med)),
                                             ZChild= as.numeric(scale(Per_child)),
                                             ZEld= as.numeric(scale(Per_eld)),
@@ -111,49 +118,80 @@ SoVI_neighborhood <- SoVI_neighborhood%>% mutate(
                                             ZPOC= as.numeric(scale(Per_POC)),
                                             ZOpenSp= as.numeric(scale(Per_OS)),
                                             ZOP_number= as.numeric(scale(Open.Space.Count)))
+
+SoVI_neighborhood <- SoVI_neighborhood %>% mutate(composite=(ZMed +ZChild+ZEld+ ZLowI +ZLEP+ZDis+ ZPOC))
+
+
+ggplot(data= SoVI_neighborhood, aes(x= Neighborhood, y=composite, color= composite)) +
+  geom_point() + scale_color_gradient(low = "blue", high = "red") 
+```
+
+```{r Boston versus Neighborhood}
+Boston_Neigh_Sum %>% select(area, Avg_POC, Avg_Med, Avg_Child, 
+                            Avg_eld, Avg_LowInc, Avg_LEng, Avg_Dis, Avg_OpenSpc) %>% 
+  kable() %>% 
+  kable_styling(bootstrap_options = "striped", full_width = F)
+write.csv(Boston_Neigh_Sum %>% select(area, Avg_POC, Avg_Med, Avg_Child, 
+                            Avg_eld, Avg_LowInc, Avg_LEng, Avg_Dis, Avg_OpenSpc), file="BostonData.csv")
+
+SoVI_neighborhood %>% 
+  select(Neighborhood, Per_POC, Per_Med, Per_child, Per_eld, Per_LI, Per_Lmt_Eng, Per_Dis, Per_OS) %>%
+  kable() %>%
+  kable_styling(bootstrap_options = "striped", full_width = F)
+```
+
+```{r Top Z scores}
 #Top Z scores 
 Top_NMed <- filter(SoVI_neighborhood, ZMed >= 1.5)
 Top_NChild <- filter(SoVI_neighborhood, ZChild >= 1.5)
-Top_NDis <- filter(SoVI_neighborhood, ZDis >= 2)
+Top_NDis <- filter(SoVI_neighborhood, ZDis >= 1.5)
 Top_NPOC <- filter(SoVI_neighborhood, ZPOC >= 1.5)
 Top_NLEP <- filter(SoVI_neighborhood, ZLEP >= 1.5)
 Top_NLI <- filter(SoVI_neighborhood, ZLowI >= 1.5)
 Top_NEld <- filter(SoVI_neighborhood, ZEld >= 1.5)
 LeastOP<- filter(SoVI_neighborhood, ZOP_number<= -1)
 
-#write.csv(SoVI_neighborhood,file= "Neighborhood_stats.csv") 
+rbind(Top_NMed, Top_NChild, Top_NDis, Top_NPOC, Top_NLEP, Top_NLI, Top_NEld, LeastOP) %>%
+  write.csv(file="topZneighborhood.csv")
 
+```
+
+```{r Visualize Z score Distribution by Neighborhood}
 #Visualize 
-Med<- ggplot(data= SoVI_neighborhood, aes(x= Neighborhood, y=ZMed, color =Per_Med)) + geom_point()+scale_color_gradient(low = "blue", high = "red") + geom_hline(yintercept = 0, color="purple")
+Med<- ggplot(data= SoVI_neighborhood, aes(x= Neighborhood, y=ZMed, color =Per_Med)) + geom_point()+scale_color_gradient(low = "blue", high = "red") + geom_hline(yintercept = 0, color="purple")+ theme(legend.title=element_blank())
 
-Child <- ggplot(data= SoVI_neighborhood, aes(x= Neighborhood, y=ZChild, color =Per_child)) + geom_point()+scale_color_gradient(low = "blue", high = "red") + geom_hline(yintercept = 0, color="purple")
+Child <- ggplot(data= SoVI_neighborhood, aes(x= Neighborhood, y=ZChild, color =Per_child)) + geom_point()+scale_color_gradient(low = "blue", high = "red") + geom_hline(yintercept = 0, color="purple") + theme(legend.title=element_blank())
 
-Eld <- ggplot(data= SoVI_neighborhood, aes(x= Neighborhood, y=ZEld, color =Per_eld)) + geom_point()+scale_color_gradient(low = "blue", high = "red") + geom_hline(yintercept = 0, color="purple")
+Eld <- ggplot(data= SoVI_neighborhood, aes(x= Neighborhood, y=ZEld, color =Per_eld)) + geom_point()+scale_color_gradient(low = "blue", high = "red") + geom_hline(yintercept = 0, color="purple") +  theme(legend.title=element_blank())
 
-LowI<- ggplot(data= SoVI_neighborhood, aes(x= Neighborhood, y=ZLowI, color =Per_LI)) + geom_point()+scale_color_gradient(low = "blue", high = "red") + geom_hline(yintercept = 0, color="purple")
+LowI<- ggplot(data= SoVI_neighborhood, aes(x= Neighborhood, y=ZLowI, color =Per_LI)) + geom_point()+scale_color_gradient(low = "blue", high = "red") + geom_hline(yintercept = 0, color="purple") +  theme(legend.title=element_blank())
 
-LEP <- ggplot(data= SoVI_neighborhood, aes(x= Neighborhood, y=ZLEP, color =Per_Lmt_Eng)) + geom_point()+scale_color_gradient(low = "blue", high = "red") + geom_hline(yintercept = 0, color="purple")
+LEP <- ggplot(data= SoVI_neighborhood, aes(x= Neighborhood, y=ZLEP,ymin=-2, ymax=2, color =Per_Lmt_Eng)) + geom_point()+scale_color_gradient(low = "blue", high = "red") + geom_hline(yintercept = 0, color="purple") +  theme(legend.title=element_blank())
 
-Dis <- ggplot(data= SoVI_neighborhood, aes(x= Neighborhood, y=ZDis, color =Per_Dis)) + geom_point()+scale_color_gradient(low = "blue", high = "red") + geom_hline(yintercept = 0, color="purple")
+Dis <- ggplot(data= SoVI_neighborhood, aes(x= Neighborhood, y=ZDis,ymin=-2, ymax=2, color =Per_Dis)) + geom_point()+scale_color_gradient(low = "blue", high = "red") + geom_hline(yintercept = 0, color="purple") +  theme(legend.title=element_blank())
 
-POC <- ggplot(data= SoVI_neighborhood, aes(x= Neighborhood, y=ZPOC, color =Per_POC)) + geom_point()+scale_color_gradient(low = "blue", high = "red") + geom_hline(yintercept = 0, color="purple")
+POC <- ggplot(data= SoVI_neighborhood, aes(x= Neighborhood, y=ZPOC,ymin=-2, ymax=2, color =Per_POC)) + geom_point()+scale_color_gradient(low = "blue", high = "red") + geom_hline(yintercept = 0, color="purple") +  theme(legend.title=element_blank())
 
-POSp <- ggplot(data= SoVI_neighborhood, aes(x= Neighborhood, y=ZOpenSp, color =Per_OS)) + geom_point()+scale_color_gradient(low = "red", high = "green") + geom_hline(yintercept = 0, color="purple")
+POSp <- ggplot(data= SoVI_neighborhood, aes(x= Neighborhood, y=ZOpenSp,ymin=-2, ymax=2, color =Per_OS)) + geom_point()+scale_color_gradient(low = "red", high = "green") + geom_hline(yintercept = 0, color="purple") +  theme(legend.title=element_blank())
 
-POScnt <- ggplot(data= SoVI_neighborhood, aes(x= Neighborhood, y=ZOP_number, color =Open.Space.Count)) + geom_point()+scale_color_gradient(low = "red", high = "green") + geom_hline(yintercept = 0, color="purple")
+POScnt <- ggplot(data= SoVI_neighborhood, aes(x= Neighborhood, y=ZOP_number, ymin=-2, ymax=2, color =Open.Space.Count)) + geom_point()+scale_color_gradient(low = "red", high = "green") + geom_hline(yintercept = 0, color="purple") +  theme(legend.title=element_blank())
 
 grid.arrange(Med, Child, Eld, LowI, LEP, Dis, POC, POSp, POScnt, ncol= 3)
 ```
 
-```{r}
-#Census Tract Level #18-24
+```{r Z score at Census tract}
+#Census Tract Leve
 CRB_Attributes <- CRB_Attributes %>% mutate(ZMed=as.numeric(scale(Per_Med)),
                                             ZChild= as.numeric(scale(Per_child)),
                                             ZEld= as.numeric(scale(Per_eld)),
                                             ZLowI= as.numeric(scale(Per_LI)),
                                             ZLEP= as.numeric(scale(Per_Lmt_Eng)),
                                             ZDis= as.numeric(scale(Per_Dis)), 
-                                            ZPOC= as.numeric(scale(Per_POC)))   
+                                            ZPOC= as.numeric(scale(Per_POC))) %>%
+                                    mutate(composite= ZMed+ ZChild + ZEld+ ZLowI+ ZLEP+ ZDis+ZPOC)
+combined <- left_join(CRB_Attributes, Index, by="GEOID10")
+ggplot(data= combined, aes(x=composite, fill= Neighborhood)) +
+  geom_histogram()
                                                  
    
 #export for GIS visualization 
@@ -165,13 +203,61 @@ Top_POC <- filter(CRB_Attributes, ZPOC >= 1.5)
 Top_LEP <- filter(CRB_Attributes, ZLEP >= 2)
 Top_LI <- filter(CRB_Attributes, ZLowI >= 2)
 Top_Eld <- filter(CRB_Attributes, ZEld >= 2)
+
+rbind(Top_Med, Top_Child, Top_Dis, Top_POC, Top_LEP, Top_LI, Top_Eld) %>% write.csv(file="highZscores.csv")
 ```
 
-```{r}
+```{r Pearson Correlation}
 #Joining CRB data with CDC's 
 combined <- left_join(CRB_Attributes, Index, by="GEOID10")
 
-cor.test()
+cor.test(combined$Per_POC, combined$SOVI0610MA)
 
+cor.test(combined$Per_child, combined$SOVI0610MA)
+
+cor.test(combined$Per_Dis, combined$SOVI0610MA)
+
+cor.test(combined$Per_LI, combined$SOVI0610MA)
+
+cor.test(combined$Per_Lmt_Eng, combined$SOVI0610MA)
+
+cor.test(combined$Per_Med, combined$SOVI0610MA)
+    #negative correlation with percent medical illness
+cor.test(combined$Per_eld, combined$SOVI0610MA)
+    #smallest correlation coefficient,  p>0.05
+```
+
+```{r Visualizing Correlations, warning=FALSE, message=FALSE}
+#Viz
+Med_plot <- ggplot(combined, aes(x= Per_Med, y=SOVI0610MA, color= Neighborhood)) +geom_point()+
+  ggtitle("R= -0.273")+theme(legend.position="none")
+
+Eld_plot <- ggplot(combined, aes(x= Per_Med, y=SOVI0610MA, color= Neighborhood)) +geom_point()+
+  ggtitle("R= 0.108")+theme(legend.position="none")
+
+POC_plot <- ggplot(combined, aes(x= Per_POC, y=SOVI0610MA, color= Neighborhood))+ 
+  geom_point() +
+  ggtitle("R= 0.462")+theme(legend.position="none")
+
+Dis_plot <- ggplot(combined, aes(x= Per_Dis, y=SOVI0610MA, color= Neighborhood))+ 
+  geom_point() +
+  ggtitle("R= 0.458")+theme(legend.position="none")
+
+Child_plot <- ggplot(combined, aes(x= Per_child, y=SOVI0610MA, 
+                                   color= Neighborhood))+ 
+  geom_point() +
+  ggtitle("R= 0.398")+theme(legend.position="none")
+
+LEP_plot <- ggplot(combined, aes(x= Per_Lmt_Eng, y=SOVI0610MA, 
+                                   color= Neighborhood))+ 
+  geom_point() +
+  ggtitle("R= 0.532")+theme(legend.position="none")
+
+LowInc_plot <- ggplot(combined, aes(x= Per_Lmt_Eng, y=SOVI0610MA, 
+                                   color= Neighborhood))+ 
+  geom_point() +
+  ggtitle("R= 0.517") +theme(legend.position= "none") 
+
+grid.arrange(Eld_plot, LEP_plot, Child_plot, Dis_plot,POC_plot,Med_plot,LowInc_plot, ncol= 3)
 ```
 
