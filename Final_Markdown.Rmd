@@ -121,7 +121,7 @@ SoVI_neighborhood <- SoVI_neighborhood %>% mutate(
 
 SoVI_neighborhood <- SoVI_neighborhood %>% mutate(composite=(ZMed +ZChild+ZEld+ ZLowI +ZLEP+ZDis+ ZPOC))
 
-
+write.csv(SoVI_neighborhood, file= "SoVI_Neighborhood_z")
 ggplot(data= SoVI_neighborhood, aes(x= Neighborhood, y=composite, color= composite)) +
   geom_point() + scale_color_gradient(low = "blue", high = "red") 
 ```
@@ -179,7 +179,7 @@ POScnt <- ggplot(data= SoVI_neighborhood, aes(x= Neighborhood, y=ZOP_number, ymi
 grid.arrange(Med, Child, Eld, LowI, LEP, Dis, POC, POSp, POScnt, ncol= 3)
 ```
 
-```{r Z score at Census tract}
+```{r Z score at Census tract, warning=FALSE}
 #Census Tract Leve
 CRB_Attributes <- CRB_Attributes %>% mutate(ZMed=as.numeric(scale(Per_Med)),
                                             ZChild= as.numeric(scale(Per_child)),
@@ -195,7 +195,8 @@ ggplot(data= combined, aes(x=composite, fill= Neighborhood)) +
                                                  
    
 #export for GIS visualization 
-#write.csv(CRB_Attributes,file= "CRB_stats.csv")
+write.csv(CRB_Attributes,file= "CRB_stats.csv")
+
 Top_Med <- filter(CRB_Attributes, ZMed >= 2)
 Top_Child <- filter(CRB_Attributes, ZChild >= 2)
 Top_Dis <- filter(CRB_Attributes, ZDis >= 2)
@@ -211,19 +212,24 @@ rbind(Top_Med, Top_Child, Top_Dis, Top_POC, Top_LEP, Top_LI, Top_Eld) %>% write.
 #Joining CRB data with CDC's 
 combined <- left_join(CRB_Attributes, Index, by="GEOID10")
 
-cor.test(combined$Per_POC, combined$SOVI0610MA)
+ct_p <- cor.test(combined$Per_POC, combined$SOVI0610MA)%>% tidy() %>% mutate(name= "POC")
 
-cor.test(combined$Per_child, combined$SOVI0610MA)
+ct_c <- cor.test(combined$Per_child, combined$SOVI0610MA)%>% tidy() %>% mutate(name= "Child")
 
-cor.test(combined$Per_Dis, combined$SOVI0610MA)
+ct_d <- cor.test(combined$Per_Dis, combined$SOVI0610MA)%>% tidy() %>% mutate(name= "Dis")
 
-cor.test(combined$Per_LI, combined$SOVI0610MA)
+ct_LI <- cor.test(combined$Per_LI, combined$SOVI0610MA)%>% tidy() %>% mutate(name= "LowInc")
 
-cor.test(combined$Per_Lmt_Eng, combined$SOVI0610MA)
+ct_LEP <- cor.test(combined$Per_Lmt_Eng, combined$SOVI0610MA)%>% tidy()%>% mutate(name= "LEP")
 
-cor.test(combined$Per_Med, combined$SOVI0610MA)
+ct_m <- cor.test(combined$Per_Med, combined$SOVI0610MA) %>% tidy() %>% mutate(name= "Med")
     #negative correlation with percent medical illness
-cor.test(combined$Per_eld, combined$SOVI0610MA)
+ct_eld <- cor.test(combined$Per_eld, combined$SOVI0610MA) %>% tidy() %>% mutate(name= "Eld")
+
+rbind(ct_p, ct_c, ct_d, ct_LI, ct_LEP, ct_m, ct_eld) %>%
+  kable() %>% 
+  kable_styling(bootstrap_options = "striped", full_width = F, position = "left") %>% column_spec(1, bold = T, border_right = T) %>%  column_spec(9, bold = T, border_right = T)
+  
     #smallest correlation coefficient,  p>0.05
 ```
 
@@ -261,3 +267,57 @@ LowInc_plot <- ggplot(combined, aes(x= Per_Lmt_Eng, y=SOVI0610MA,
 grid.arrange(Eld_plot, LEP_plot, Child_plot, Dis_plot,POC_plot,Med_plot,LowInc_plot, ncol= 3)
 ```
 
+```{r Relationships with Open Space, warning= FALSE}
+Open_Space <- read.csv("./Data/Open_Space_v3.csv")
+OP_Rec <- Open_Space %>% filter(TypeLong== "Park_Play_Fields") %>% 
+        group_by(CRB_Neighborhood) %>% 
+        summarise(RecArea= as.numeric((sum(ACRES))))
+                                                                                                     
+OP_GS <- Open_Space %>% filter(TypeLong== "Natural_Areas") %>% 
+      group_by(CRB_Neighborhood) %>%
+      summarise(Green_area= as.numeric((sum(ACRES)))) 
+
+OP_PrtAreas <-Open_Space %>% filter(TypeLong== "Parks_Reserv_Beaches") %>% 
+      group_by(CRB_Neighborhood) %>%
+      summarise(PtA_area= as.numeric((sum(ACRES))))
+
+OP_Garden <- Open_Space %>% filter(TypeLong== "Community_Gardens") %>% 
+      group_by(CRB_Neighborhood) %>% 
+      summarise(Gard_area= as.numeric((sum(ACRES))))
+
+AllOpenSpace <- full_join(OP_Rec,OP_GS, by= "CRB_Neighborhood")
+All<- AllOpenSpace %>% full_join(OP_PrtAreas, by= "CRB_Neighborhood") %>% full_join(OP_Garden, by="CRB_Neighborhood")
+
+
+SoVI_neighborhood <- SoVI_neighborhood %>% rename(CRB_Neighborhood= Neighborhood_full)
+J <- full_join(SoVI_neighborhood, All, by= "CRB_Neighborhood")
+
+J <- J %>%
+  mutate_if(is.numeric, funs(replace(., is.na(.), 0))) %>% 
+  mutate(Tot_GreenSpace= RecArea + Green_area + PtA_area + Gard_area) %>%
+  mutate(ratio_green= Tot_GreenSpace/AREA_ACRES)
+J %>% filter(ratio_green>= 1) 
+  #Longwood Open Space file from GIS and neighborhood outline shows Longwood as all open space
+J <- J[-c(12),]  #removing longwood 
+
+```
+
+
+
+```{r Social Vulnerability and Climate Readiness, warning=FALSE}
+
+SoVI_neighborhood <- SoVI_neighborhood %>% 
+  mutate(Storm.Water.Priorities = fct_relevel(Storm.Water.Priorities, "Low", "Medium", "High"),
+         Temperature.Hot.Spots=  fct_relevel(Temperature.Hot.Spots, "Low", "Medium", "High"))
+
+
+ggplot(SoVI_neighborhood, aes( x= Storm.Water.Priorities, y=composite)) + 
+  geom_boxplot()
+
+ggplot(SoVI_neighborhood, aes( y= Emergency.Services.Hotspots, x=composite)) + 
+  geom_point() 
+
+ggplot(SoVI_neighborhood, aes( x= Temperature.Hot.Spots, y=composite)) + 
+  geom_boxplot() 
+
+```

@@ -1,0 +1,972 @@
+CRB_Neighborhood,SITE_NAME,OWNERSHIP,TYPECODE,ACRES,TypeLong
+Back Bay,Boston Common,City of Boston,3,45.74,Park_Play_Fields
+Back Bay,Central Burying Ground,City of Boston,4,1.49,Burial_Grounds
+Back Bay,Public Gardens,City of Boston,3,23.51,Park_Play_Fields
+Back Bay,Myrtle Street Playground,City of Boston,3,0.14766565,Park_Play_Fields
+Back Bay,Louisburg Square,Private,1,0.32409576,Malls_Sqs_Plaza
+Back Bay,Copley Square Park,City of Boston,1,1.85428821,Malls_Sqs_Plaza
+Back Bay,Prudential Center Plaza I,Private,1,1.0626591,Malls_Sqs_Plaza
+Back Bay,Clarendon Street Playlot,City of Boston,3,0.33235436,Park_Play_Fields
+Back Bay,Symphony Community Park,City of Boston,3,0.49679593,Park_Play_Fields
+Back Bay,Edgerly Road Playground,City of Boston,3,0.1081164,Park_Play_Fields
+Back Bay,Commonwealth Avenue Mall II,City of Boston,1,0.98,Malls_Sqs_Plaza
+Back Bay,Harry Ellis Dickson Park,City of Boston,1,0.08351658,Malls_Sqs_Plaza
+Back Bay,Dartmouth Street Mall,City of Boston,1,0.99856538,Malls_Sqs_Plaza
+Back Bay,Christian Science Plaza,Private,1,9.91998231,Malls_Sqs_Plaza
+Back Bay,Harcourt/West Canton Garden,MBTA,5,0.05094606,Community_Gardens
+Back Bay,Follen Garden,MBTA,5,0.0870362,Community_Gardens
+Back Bay,Copley Place Plaza,MassDOT,1,0.28932601,Malls_Sqs_Plaza
+Back Bay,Prudential Center Plaza II,Private,1,1.09,Malls_Sqs_Plaza
+Back Bay,Prudential Center Plaza III,Private,1,1.02,Malls_Sqs_Plaza
+Back Bay,BPL Courtyard,City of Boston,1,0.19,Malls_Sqs_Plaza
+Back Bay,Charlesgate II,Commonwealth of Massachusetts,2,1.49,Parks_Reserv_Beaches
+Back Bay,Boylston Street II,Commonwealth of Massachusetts,2,2.4,Parks_Reserv_Beaches
+Back Bay,Commonwealth Avenue Mall I,City of Boston,1,10.87,Malls_Sqs_Plaza
+Back Bay,Belvidere/Dalton Plaza,City of Boston,1,0.14717063,Malls_Sqs_Plaza
+Back Bay,BU Grounds Central,Private,1,2.53983108,Malls_Sqs_Plaza
+Back Bay,Mount Vernon Square,Private,1,0.05,Malls_Sqs_Plaza
+Back Bay,Charlesgate I,Commonwealth of Massachusetts,2,6.52,Parks_Reserv_Beaches
+Back Bay,Charles River Reservation,Commonwealth of Massachusetts,2,171.69,Parks_Reserv_Beaches
+Back Bay,Southwest Corridor Park,MBTA,2,47.68,Parks_Reserv_Beaches
+Bay Village,Tai Tung Park,City of Boston,3,0.03323863,Park_Play_Fields
+Bay Village,Pine Street Park,BRA,3,0.27166117,Park_Play_Fields
+Bay Village,Childe Hassam Park,City of Boston,1,0.06016341,Malls_Sqs_Plaza
+Bay Village,Chandler/Tremont Plaza,City of Boston,1,0.23,Malls_Sqs_Plaza
+Bay Village,Oak Terrace Playlot,Private,3,0.0309362,Park_Play_Fields
+Bay Village,Bay Village Garden,City of Boston,5,0.02,Community_Gardens
+Bay Village,Lincoln Square,City of Boston,1,0.05486393,Malls_Sqs_Plaza
+Bay Village,Statler Park,City of Boston,1,0.22675082,Malls_Sqs_Plaza
+Bay Village,Castle Square Parks,BRA,3,1.19,Park_Play_Fields
+Bay Village,Elliot Norton Park,City of Boston,3,0.77064426,Park_Play_Fields
+Bay Village,Bay Village Neighborhood Park,City of Boston,1,0.07965458,Malls_Sqs_Plaza
+Bay Village,Fourth Street Park,Commonwealth of Massachusetts,1,0.66,Malls_Sqs_Plaza
+Allston,Commonwealth Avenue Outbound,City of Boston,1,5.52780408,Malls_Sqs_Plaza
+Brighton,Wilson Park,City of Boston,1,0.09717567,Malls_Sqs_Plaza
+Brighton,Hooker-Sorrento Street Playground,City of Boston,3,1.00537799,Park_Play_Fields
+Brighton,Smith Playground,City of Boston,3,14.79771231,Park_Play_Fields
+Brighton,Fern Square,City of Boston,1,0.04054316,Malls_Sqs_Plaza
+Brighton,Ringer Playground,City of Boston,3,10.25585494,Park_Play_Fields
+Brighton,Kennedy Rock,Private,6,2.21054314,Natural_Areas
+Brighton,McKinney Playground,City of Boston,3,5.89138132,Park_Play_Fields
+Brighton,Hobart Park,City of Boston,3,0.80884689,Park_Play_Fields
+Brighton,Market Street Burying Ground,City of Boston,4,0.39534779,Burial_Grounds
+Brighton,Jackson Square,City of Boston,1,0.12031326,Malls_Sqs_Plaza
+Brighton,Reilly Playground,Commonwealth of Massachusetts,3,6.96695306,Park_Play_Fields
+Brighton,Boyden Park,Commonwealth of Massachusetts,1,0.48179081,Malls_Sqs_Plaza
+Brighton,Evergreen Cemetery,City of Boston,4,20.77215033,Burial_Grounds
+Brighton,Hardiman Playground,City of Boston,3,1.47302947,Park_Play_Fields
+Brighton,St John's Seminary,Private,6,59.97256943,Natural_Areas
+Brighton,The Cenacles,Private,6,15.33969764,Natural_Areas
+Brighton,Rogers Park,City of Boston,3,8.17116962,Park_Play_Fields
+Brighton,Euston Path Rock,City of Boston,6,0.39015654,Natural_Areas
+Brighton,Turnpike Overlook,MassDOT,6,3.15,Natural_Areas
+Brighton,Foster Street Hill,Private,6,3.40605727,Natural_Areas
+Brighton,Foster Street Rock,Private,6,4.62718042,Natural_Areas
+Brighton,Boston College Athletic Fields,Private,3,9.72386143,Park_Play_Fields
+Brighton,Chandler Pond,City of Boston,3,18.90802906,Park_Play_Fields
+Brighton,Crittenton Hospital,Private,6,2.92656298,Natural_Areas
+Brighton,Chestnut Hill Reservoir,Commonwealth of Massachusetts,2,115.8023318,Parks_Reserv_Beaches
+Brighton,Commonwealth Avenue Outbound,City of Boston,1,5.52780408,Malls_Sqs_Plaza
+Brighton,Mount St. Joseph's Athletic Fields,Private,6,4.19149009,Natural_Areas
+Brighton,Penniman Road Play Area,City of Boston,3,0.7600167,Park_Play_Fields
+Brighton,Chestnut Hill Reservoir Garden,Commonwealth of Massachusetts,5,0.11361635,Community_Gardens
+Brighton,Boston University Ball Diamond,Private,3,1.67668525,Park_Play_Fields
+Brighton,Oak Square,City of Boston,1,0.27145612,Malls_Sqs_Plaza
+Brighton,Wilson Square,City of Boston,1,0.05817535,Malls_Sqs_Plaza
+Brighton,Leo M. Birmingham Parkway,Commonwealth of Massachusetts,2,6.98115238,Parks_Reserv_Beaches
+Brighton,Theresa Hynes Park,Private,3,0.45342376,Park_Play_Fields
+Brighton,Union Square Plaza,City of Boston,1,0.07861218,Malls_Sqs_Plaza
+Brighton,Commonwealth Tenants Association CG,BHA,5,0.35038399,Community_Gardens
+Brighton,North Beacon Allee,Private,1,0.84,Malls_Sqs_Plaza
+Brighton,Brian Honan Park,Private,3,0.45,Park_Play_Fields
+Brighton,Brighton HS Hillside,City of Boston,1,1.43,Malls_Sqs_Plaza
+Brighton,St. Elizabeth's Hospital Campus,Private,1,4.86,Malls_Sqs_Plaza
+Brighton,Brighton Common,City of Boston,1,0.51023197,Malls_Sqs_Plaza
+Brighton,Joyce Playground,City of Boston,3,1.31255051,Park_Play_Fields
+Brighton,Cassidy Playground,City of Boston,3,9.3341859,Park_Play_Fields
+Brighton,Shubow Park I,City of Boston,3,0.57,Park_Play_Fields
+Brighton,Shubow Park II,City of Boston,3,0.16,Park_Play_Fields
+Brighton,Brighton Police Station Campus,City of Boston,1,0.45,Malls_Sqs_Plaza
+Brighton,Public Ground,City of Boston,1,0.06,Malls_Sqs_Plaza
+Brighton,Portsmouth Street Playground,City of Boston,3,4.2823461,Park_Play_Fields
+Brighton,Raymond V. Mellone Park I,City of Boston,3,1.08,Park_Play_Fields
+Brighton,Raymond V. Mellone Park II,City of Boston,3,0.48,Park_Play_Fields
+Brighton,Soldiers Field,Private,3,61.96925141,Park_Play_Fields
+Brighton,Charles River Reservation,Commonwealth of Massachusetts,2,171.69,Parks_Reserv_Beaches
+Brighton,Cunningham Park,City of Boston,1,0.17585485,Malls_Sqs_Plaza
+Brighton,Fidelis Way Park,City of Boston,3,5.10486027,Park_Play_Fields
+Brighton,Mahoney Park,City of Boston,1,0.028,Malls_Sqs_Plaza
+Brighton,Theresa Hynes Park Access Easement,Private,0,0, 
+Charlestown,Edwards Playground,City of Boston,3,1.34,Park_Play_Fields
+Charlestown,City Square,Commonwealth of Massachusetts,1,1.21,Malls_Sqs_Plaza
+Charlestown,John Harvard Mall,City of Boston,1,0.82977059,Malls_Sqs_Plaza
+Charlestown,Paul Revere Park,Commonwealth of Massachusetts,2,6.40013027,Parks_Reserv_Beaches
+Charlestown,Charlestown HS Athletic Fields,City of Boston,3,10.42,Park_Play_Fields
+Charlestown,Ryan Playground,City of Boston,3,8.78,Park_Play_Fields
+Charlestown,Gardens for Charlestown,Private,5,0.36291476,Community_Gardens
+Charlestown,Barry Playground,City of Boston,3,3.32,Park_Play_Fields
+Charlestown,Doherty Playground,City of Boston,3,3.02175616,Park_Play_Fields
+Charlestown,St Francis De Sales Cemetery,Private,4,1.79538401,Burial_Grounds
+Charlestown,Bunker Hill Monument,United States of America,1,3.75283998,Malls_Sqs_Plaza
+Charlestown,Phipp's Street Burying Ground,City of Boston,4,1.7478712,Burial_Grounds
+Charlestown,Winthrop Square,City of Boston,1,0.9,Malls_Sqs_Plaza
+Charlestown,Hayes Square,City of Boston,1,0.17470544,Malls_Sqs_Plaza
+Charlestown,Charlestown Sprouts Garden,City of Boston,5,0.48,Community_Gardens
+Charlestown,Sullivan Square,City of Boston,1,1.62052496,Malls_Sqs_Plaza
+Charlestown,Caldwell Street Play Area,City of Boston,3,0.11285785,Park_Play_Fields
+Charlestown,Patrick J. Kelly Park,Private,3,0.14062231,Park_Play_Fields
+Charlestown,Little Mystic Access Area,BRA,3,2.07,Park_Play_Fields
+Charlestown,Corey Street Court,BHA,3,0.17552117,Park_Play_Fields
+Charlestown,13th Street Circle Garden,City of Boston,5,0.05871058,Community_Gardens
+Charlestown,8th Street Circle Garden,City of Boston,5,0.04690589,Community_Gardens
+Charlestown,9th Street Circle Garden,City of Boston,5,0.04569857,Community_Gardens
+Charlestown,Charlestown Parcel 6,MassDOT,1,0.12,Malls_Sqs_Plaza
+Charlestown,CANA Portal,MassDOT,1,1.15,Malls_Sqs_Plaza
+Charlestown,Galvin Green,Commonwealth of Massachusetts,1,5.13,Malls_Sqs_Plaza
+Charlestown,O'Reilly Way Court,BHA,3,0.53,Park_Play_Fields
+Charlestown,Schraffts Centre Harborwalk,Private,1,1.01,Malls_Sqs_Plaza
+Charlestown,Kennedy Family Service Center Park,Private,3,0.11,Park_Play_Fields
+Charlestown,Kennedy Family Service Cntr Playlot,Private,3,0.2,Park_Play_Fields
+Charlestown,Mishawam Playlots,Private,3,0.24,Park_Play_Fields
+Charlestown,Medford Street Corridor II,Private,7,1.63,Park_Play_Fields
+Charlestown,Bunker Hill Burying Ground,City of Boston,4,1.1230495,Burial_Grounds
+Charlestown,Rink Grounds,Commonwealth of Massachusetts,3,0.73,Park_Play_Fields
+Charlestown,Essex Square,City of Boston,1,0.03,Malls_Sqs_Plaza
+Charlestown,Thompson Square,City of Boston,1,0.14,Malls_Sqs_Plaza
+Charlestown,Charlestown Veteran's Memorial Park,City of Boston,1,0.04,Malls_Sqs_Plaza
+Charlestown,Menino Park,BRA,3,1.24,Park_Play_Fields
+Charlestown,Bunker Hill CC Athletic Fields,Commonwealth of Massachusetts,3,14.07,Park_Play_Fields
+Charlestown,Bunker Hill CC Campus Grounds,Commonwealth of Massachusetts,3,0,Park_Play_Fields
+Charlestown,Charlestown Overlook,BRA,6,0.21,Natural_Areas
+Charlestown,Cook Street Play Area,City of Boston,3,0.0981234,Park_Play_Fields
+Charlestown,Spaulding Rehabilitation Plaza,Private,1,0.3,Malls_Sqs_Plaza
+Charlestown,Charlestown Naval Shipyard Park II,Private,3,0.85580779,Park_Play_Fields
+Charlestown,Navy Yard Grounds,United States of America,3,3.58,Park_Play_Fields
+Charlestown,Peter Looney Park,City of Boston,3,0.67,Park_Play_Fields
+Charlestown,Charlestown Naval Shipyard Park I,BRA,3,9.58,Park_Play_Fields
+Charlestown,Mt. Vernon Street Plaza,Massport,3,0.15,Park_Play_Fields
+Charlestown,Austin & Main Plaza,BRA,1,0.12,Malls_Sqs_Plaza
+Charlestown,Medford Street Corridor I,Massport,7,6.85,Park_Play_Fields
+Dorchester,Dorchester North Burying Ground,City of Boston,4,3.30391727,Burial_Grounds
+Dorchester,Calf Pasture I,City of Boston,6,1.93,Natural_Areas
+Dorchester,Meetinghouse Hill Overlook,City of Boston,6,0.40922366,Natural_Areas
+Dorchester,Downer Avenue Playground,City of Boston,3,0.80889778,Park_Play_Fields
+Dorchester,The Humps,City of Boston,6,0.92720636,Natural_Areas
+Dorchester,Quincy/Stanley Play Area,City of Boston,3,0.3724094,Park_Play_Fields
+Dorchester,Deer Street Park,City of Boston,3,0.24478116,Park_Play_Fields
+Dorchester,Savin Hill Beach,Commonwealth of Massachusetts,2,2.98993894,Parks_Reserv_Beaches
+Dorchester,Coppens Square,City of Boston,1,0.35701954,Malls_Sqs_Plaza
+Dorchester,Old Harbor Park,Commonwealth of Massachusetts,2,7.99,Parks_Reserv_Beaches
+Dorchester,McConnell Park,City of Boston,3,6.20127641,Park_Play_Fields
+Dorchester,Sterling Square,BHA,1,1.0387651,Malls_Sqs_Plaza
+Dorchester,Veterans Memorial Park,BHA,3,0.20177296,Park_Play_Fields
+Dorchester,Ronan Park,City of Boston,3,11.27463098,Park_Play_Fields
+Dorchester,Mt. Bowdoin Green,City of Boston,1,0.53817884,Malls_Sqs_Plaza
+Dorchester,Byrne Playground,City of Boston,3,1.26302622,Park_Play_Fields
+Dorchester,Doherty/Gibson Playground,City of Boston,3,5.72627282,Park_Play_Fields
+Dorchester,Wellesley Park,City of Boston,3,0.71338629,Park_Play_Fields
+Dorchester,McMorrow Playground,Commonwealth of Massachusetts,3,5.23186736,Park_Play_Fields
+Dorchester,Hemenway Playground,City of Boston,3,4.39521048,Park_Play_Fields
+Dorchester,Rev. Loesch Family Park,City of Boston,3,2.25259606,Park_Play_Fields
+Dorchester,Codman Burying Ground,Private,4,2.62522784,Burial_Grounds
+Dorchester,Gallivan/Hallet Circle,Commonwealth of Massachusetts,1,0.47798957,Malls_Sqs_Plaza
+Dorchester,Toohig Playground,Commonwealth of Massachusetts,3,2.12423446,Park_Play_Fields
+Dorchester,Martin/Hilltop Playground,City of Boston,3,1.31193964,Park_Play_Fields
+Dorchester,Nightingale Garden,BNAN,5,1.37139983,Community_Gardens
+Dorchester,10 Josephine Street Garden,Community Group/Nonprofit,5,0.06908424,Community_Gardens
+Dorchester,29 Josephine Street Garden,Community Group/Nonprofit,5,0.11306632,Community_Gardens
+Dorchester,Mother's Rest at Four Corners,City of Boston,3,1.12453477,Park_Play_Fields
+Dorchester,Ripley Playground,City of Boston,3,0.82672673,Park_Play_Fields
+Dorchester,Garvey Playground,City of Boston,3,5.27312017,Park_Play_Fields
+Dorchester,Centervale Park,City of Boston,1,0.19595483,Malls_Sqs_Plaza
+Dorchester,Conley & Tenean Streets Park,Commonwealth of Massachusetts,3,0.50706674,Park_Play_Fields
+Dorchester,Norton Street Playground,BRA,3,0.06590689,Park_Play_Fields
+Dorchester,Keystone Shoreline,Private,6,0.52357348,Natural_Areas
+Dorchester,Geneva Cliffs I,City of Boston,6,1.82935019,Natural_Areas
+Dorchester,Torrey Street Park Garden,Community Group/Nonprofit,5,0.06794837,Community_Gardens
+Dorchester,Wheatland Avenue Victory Garden,BNAN,5,0.15480932,Community_Gardens
+Dorchester,Clayborne Street Garden,Community Group/Nonprofit,5,0.07610699,Community_Gardens
+Dorchester,Fannie Lou Hamer Community Garden,Private,5,0.10322488,Community_Gardens
+Dorchester,Audrey Jacobs Memorial CG,BNAN,5,0.10389404,Community_Gardens
+Dorchester,Bullard Street Garden,Community Group/Nonprofit,5,0.09183434,Community_Gardens
+Dorchester,Quincy/Coleman Garden,Community Group/Nonprofit,5,0.3022826,Community_Gardens
+Dorchester,Barry Street Garden,Community Group/Nonprofit,5,0.09218628,Community_Gardens
+Dorchester,Lydon Way Garden,City of Boston,5,0.18563368,Community_Gardens
+Dorchester,Codman Square,City of Boston,1,0.33918222,Malls_Sqs_Plaza
+Dorchester,UMass Boston Athletic Fields,Commonwealth of Massachusetts,3,18.4677814,Park_Play_Fields
+Dorchester,Claymont Terrace,Private,3,0.60573728,Park_Play_Fields
+Dorchester,Lucy Stone Schoolyard,City of Boston,3,0.78345732,Park_Play_Fields
+Dorchester,Fernald Rock,City of Boston,6,0.06422499,Natural_Areas
+Dorchester,L Street Beach,City of Boston,2,5.57101615,Parks_Reserv_Beaches
+Dorchester,M Street Beach,Commonwealth of Massachusetts,2,4.40267291,Parks_Reserv_Beaches
+Dorchester,Strandway/Castle Island,Commonwealth of Massachusetts,2,47.69946623,Parks_Reserv_Beaches
+Dorchester,Marine Park,Commonwealth of Massachusetts,2,17.19998118,Parks_Reserv_Beaches
+Dorchester,UMass Harborwalk,Commonwealth of Massachusetts,2,13.08531362,Parks_Reserv_Beaches
+Dorchester,Malibu Beach,Commonwealth of Massachusetts,2,26.11747726,Parks_Reserv_Beaches
+Dorchester,Victory Road Park,Commonwealth of Massachusetts,2,6.15465743,Parks_Reserv_Beaches
+Dorchester,Florida Street Reservation,City of Boston,1,0.06797031,Malls_Sqs_Plaza
+Dorchester,Tenean Beach,Commonwealth of Massachusetts,2,8.70153083,Parks_Reserv_Beaches
+Dorchester,Moakley Park,City of Boston,3,58.77242512,Park_Play_Fields
+Dorchester,Kennedy Library Harborwalk,United States of America,1,3.32160247,Malls_Sqs_Plaza
+Dorchester,Savin Hill Cove,Commonwealth of Massachusetts,2,1.77442501,Parks_Reserv_Beaches
+Dorchester,Daniel E. O'Connor Park,City of Boston,1,0.13514805,Malls_Sqs_Plaza
+Dorchester,Harbor Point Boulevard,Private,1,2.30972838,Malls_Sqs_Plaza
+Dorchester,Patten's Cove,Commonwealth of Massachusetts,2,9.57859611,Parks_Reserv_Beaches
+Dorchester,Meetinghouse Hill Churchyard,Private,1,0.80745493,Malls_Sqs_Plaza
+Dorchester,McCormack School Ball Field,City of Boston,3,1.4,Park_Play_Fields
+Dorchester,Boston College HS Athletic Fields,Private,3,19.53,Park_Play_Fields
+Dorchester,Stanley-Bellevue Park,City of Boston,3,0.35177328,Park_Play_Fields
+Dorchester,Paul Sullivan House Comm Garden,Community Group/Nonprofit,5,0.05367956,Community_Gardens
+Dorchester,Clementine Park,City of Boston,5,0.02508511,Community_Gardens
+Dorchester,Columbia Point Community Garden,Private,5,0.05,Community_Gardens
+Dorchester,UMass Boston Campus Ctr Oval,Commonwealth of Massachusetts,1,1.66,Malls_Sqs_Plaza
+Dorchester,Melvinside Play Area,Private,3,0.4,Park_Play_Fields
+Dorchester,William S. Britton Square,City of Boston,1,0.03,Malls_Sqs_Plaza
+Dorchester,Algonquin Square,City of Boston,1,0.04,Malls_Sqs_Plaza
+Dorchester,Scalia Square,City of Boston,1,0.01,Malls_Sqs_Plaza
+Dorchester,Edward Everett Square,City of Boston,1,0.09,Malls_Sqs_Plaza
+Dorchester,Dever School Schoolyard,City of Boston,3,1.13,Park_Play_Fields
+Dorchester,McCormack School Courts,City of Boston,3,0.32,Park_Play_Fields
+Dorchester,Ryan Play Area,City of Boston,3,0.63,Park_Play_Fields
+Dorchester,Adams/King Playground,City of Boston,3,0.68,Park_Play_Fields
+Dorchester,Elmhurst Street Park,City of Boston,3,0.23484021,Park_Play_Fields
+Dorchester,Spencer Street Garden,BNAN,5,0.1029241,Community_Gardens
+Dorchester,McCormack School Yard,City of Boston,3,0.58,Park_Play_Fields
+Dorchester,Tebroc Street Playlot,City of Boston,3,0.02,Park_Play_Fields
+Dorchester,Norton/Stonehurst Garden,BNAN,5,0.08486794,Community_Gardens
+Dorchester,Tremlett Square,City of Boston,1,0.16,Malls_Sqs_Plaza
+Dorchester,Roberts Playground,City of Boston,3,10.18916048,Park_Play_Fields
+Dorchester,Geneva Cliffs II,Private,6,1.19,Natural_Areas
+Dorchester,Calf Pasture II,Commonwealth of Massachusetts,6,7.12,Natural_Areas
+Dorchester,Rupert-Trinity Park,Private,1,0.07,Malls_Sqs_Plaza
+Dorchester,Pope John Paul II Park I,Commonwealth of Massachusetts,2,70,Parks_Reserv_Beaches
+Dorchester,Port Norfolk Park,Commonwealth of Massachusetts,2,12.72,Parks_Reserv_Beaches
+Dorchester,Pope John Paul II Park II,MBTA,2,0.33,Parks_Reserv_Beaches
+Dorchester,West Link Park,Commonwealth of Massachusetts,2,3.43,Parks_Reserv_Beaches
+Dorchester,Carson Beach,Commonwealth of Massachusetts,2,24.73207787,Parks_Reserv_Beaches
+Dorchester,Commercial Point,Commonwealth of Massachusetts,2,2.38,Parks_Reserv_Beaches
+Dorchester,Savin Hill Park,City of Boston,3,8.29468216,Park_Play_Fields
+Dorchester,Allen Park,City of Boston,3,1.29,Park_Play_Fields
+Dorchester,O'Donnell Square,City of Boston,1,0.06,Malls_Sqs_Plaza
+Dorchester,Columbia Road/Day Boulevard,Commonwealth of Massachusetts,2,16.85,Parks_Reserv_Beaches
+East Boston,East Boston Memorial Park I,City of Boston,3,14.79060502,Park_Play_Fields
+East Boston,Noyes Playground,City of Boston,3,8.22374845,Park_Play_Fields
+East Boston,Bayswater Street,Massport,6,1.70395628,Natural_Areas
+East Boston,Temple Ohabei Shalom Cemetery,Private,4,2.33948186,Burial_Grounds
+East Boston,Cuneo Park,City of Boston,3,0.23067238,Park_Play_Fields
+East Boston,Bennington Street Cemetery,City of Boston,4,3.58974149,Burial_Grounds
+East Boston,American Legion Playground,City of Boston,3,3.38388095,Park_Play_Fields
+East Boston,Prescott Square,City of Boston,1,0.27780017,Malls_Sqs_Plaza
+East Boston,Putnam Square,City of Boston,1,0.26354042,Malls_Sqs_Plaza
+East Boston,Paris Street Playground,City of Boston,3,0.79449789,Park_Play_Fields
+East Boston,Brophy Park,City of Boston,3,0.77383094,Park_Play_Fields
+East Boston,Sumner & Lamson Street Playground,City of Boston,3,0.48357588,Park_Play_Fields
+East Boston,Joe Ciampa Garden,BNAN,5,0.22171011,Community_Gardens
+East Boston,Condor Street Beach I,City of Boston,6,2.74,Natural_Areas
+East Boston,Festa Field,Massport,3,0.99445051,Park_Play_Fields
+East Boston,Eagle Hill Memorial Park Garden,BNAN,5,0.15315481,Community_Gardens
+East Boston,East Boston Greenway,City of Boston,2,2.61096403,Parks_Reserv_Beaches
+East Boston,Dom Savio Athletic Field,Private,3,3.11070765,Park_Play_Fields
+East Boston,Belle Isle Coastal Preserve,City of Boston,6,1.57,Natural_Areas
+East Boston,Lewis Mall,BHA,1,1.27120513,Malls_Sqs_Plaza
+East Boston,Scarmella/Maverick Square,Commonwealth of Massachusetts,1,0.39870423,Malls_Sqs_Plaza
+East Boston,Veterans Park I,MassDOT,3,0.37,Park_Play_Fields
+East Boston,Veterans Park II,City of Boston,3,0.2,Park_Play_Fields
+East Boston,Decatur & Meridian Streets Park,MassDOT,3,0.2,Park_Play_Fields
+East Boston,East Boston Piers Park,Massport,3,6.79,Park_Play_Fields
+East Boston,Golden Stairs Terrace Park I,City of Boston,3,0.17,Park_Play_Fields
+East Boston,The Rockies,City of Boston,6,0.72777625,Natural_Areas
+East Boston,Mendoza Square,City of Boston,1,0.03237484,Malls_Sqs_Plaza
+East Boston,Belle Isle Marsh Reservation,Commonwealth of Massachusetts,2,142.1,Parks_Reserv_Beaches
+East Boston,Suffolk Downs Infield,Private,3,28.37534005,Park_Play_Fields
+East Boston,Condor Street Overlook,City of Boston,6,0.45,Natural_Areas
+East Boston,Bremen Street Park I,Massport,3,17.79,Park_Play_Fields
+East Boston,Our Garden,City of Boston,5,0.34129706,Community_Gardens
+East Boston,Shore Plaza East Garden,Private,5,0.09258596,Community_Gardens
+East Boston,Lombardi Memorial Park,BHA,1,0.53,Malls_Sqs_Plaza
+East Boston,Lewis Mall Harborpark,City of Boston,1,0.25,Malls_Sqs_Plaza
+East Boston,South Shore Plaza Courts,Private,3,0.23,Park_Play_Fields
+East Boston,South Shore Plaza Park,Private,1,0.5,Malls_Sqs_Plaza
+East Boston,East Boston Social Centers Playlot,Private,3,0.33,Park_Play_Fields
+East Boston,Golden Stairs Terrace Park II,City of Boston,1,0.07,Malls_Sqs_Plaza
+East Boston,Solari Square,City of Boston,1,0.005,Malls_Sqs_Plaza
+East Boston,Suffolk Downs T Station Lawns,MBTA,1,0.97,Malls_Sqs_Plaza
+East Boston,Belle Isle Inlet Buffer I,MBTA,6,5.04,Natural_Areas
+East Boston,Belle Isle Inlet Buffer II,Private,6,2.04,Natural_Areas
+East Boston,East Boston Memorial Park II,Massport,3,3.06,Park_Play_Fields
+East Boston,East Boston Memorial Park III,Commonwealth of Massachusetts,3,2.01,Park_Play_Fields
+East Boston,Bremen Street Park II,Massport,3,0.01,Park_Play_Fields
+East Boston,Condor Street Beach II,City of Boston,3,0.2,Park_Play_Fields
+East Boston,London Street Park,MassDOT,3,0.14,Park_Play_Fields
+East Boston,Central Square,City of Boston,1,0.90501454,Malls_Sqs_Plaza
+East Boston,Bonito Square,City of Boston,1,0.05754655,Malls_Sqs_Plaza
+East Boston,LoPresti Park,City of Boston,3,3.23,Park_Play_Fields
+East Boston,Wood Island Bay Edge,Massport,6,3.3712914,Natural_Areas
+East Boston,Wood Island Bay Marsh,Massport,6,68.21507048,Natural_Areas
+East Boston,Don Orione,Private,6,4.73515262,Natural_Areas
+East Boston,Constitution Beach,Commonwealth of Massachusetts,2,25.39673452,Parks_Reserv_Beaches
+East Boston,Umana Schoolyard,City of Boston,3,2.52044147,Park_Play_Fields
+East Boston,Massport Harborwalk,Massport,1,3.52985924,Malls_Sqs_Plaza
+East Boston,Porzio Park II,City of Boston,3,0.14,Park_Play_Fields
+East Boston,Porzio Park,City of Boston,3,1.65840158,Park_Play_Fields
+East Boston,McLean Playground,City of Boston,3,0.42966509,Park_Play_Fields
+East Boston,Navy Fuel Pier Airport Edge Buffer,Massport,3,0.84,Park_Play_Fields
+East Boston,Goodearl Square,City of Boston,1,0.01,Malls_Sqs_Plaza
+East Boston,Condor Street Overlook Access Area,City of Boston,6,0.03,Natural_Areas
+East Boston,Meridian-London Triangle,City of Boston,1,0.03,Malls_Sqs_Plaza
+Fenway,Nickerson Field,Private,3,6.34559501,Park_Play_Fields
+Fenway,Fenway Park Field,Private,3,2.78,Park_Play_Fields
+Fenway,Symphony Road Garden,BNAN,5,0.29788615,Community_Gardens
+Fenway,Ramler Park,City of Boston,3,0.51,Park_Play_Fields
+Fenway,Commonwealth Plaza,MassDOT,1,0.15673393,Malls_Sqs_Plaza
+Fenway,Harvard Business School Athltc Flds,Private,3,0.56528814,Park_Play_Fields
+Fenway,Riverway I,City of Boston,3,17.18,Park_Play_Fields
+Fenway,Charlesgate II,Commonwealth of Massachusetts,2,1.49,Parks_Reserv_Beaches
+Fenway,Boylston Street I,City of Boston,2,0.62,Parks_Reserv_Beaches
+Fenway,Boylston Street II,Commonwealth of Massachusetts,2,2.4,Parks_Reserv_Beaches
+Fenway,Park Drive I,City of Boston,2,5.1,Parks_Reserv_Beaches
+Fenway,Park Drive II,Commonwealth of Massachusetts,2,1.38,Parks_Reserv_Beaches
+Fenway,Riverway II,Commonwealth of Massachusetts,2,2.36,Parks_Reserv_Beaches
+Fenway,BU Grounds West,Private,1,1.1,Malls_Sqs_Plaza
+Fenway,BU Grounds Central,Private,1,2.53983108,Malls_Sqs_Plaza
+Fenway,BU Grounds South,Private,1,0.83,Malls_Sqs_Plaza
+Fenway,BU Yard,Private,3,0.18,Park_Play_Fields
+Fenway,BU Grounds East,Private,1,0.61,Malls_Sqs_Plaza
+Fenway,Kilmarnock-Brookline Square,Private,1,0.1,Malls_Sqs_Plaza
+Fenway,Soldiers Field,Private,3,61.96925141,Park_Play_Fields
+Fenway,Charles River Reservation,Commonwealth of Massachusetts,2,171.69,Parks_Reserv_Beaches
+Hyde Park,Connell Fields/Hickey Courts,Commonwealth of Massachusetts,3,4.1483742,Park_Play_Fields
+Hyde Park,Doyle Playground,Commonwealth of Massachusetts,3,0.94486646,Park_Play_Fields
+Hyde Park,West Street,City of Boston,6,2.53280629,Natural_Areas
+Hyde Park,Dell Rock I,City of Boston,6,1.3,Natural_Areas
+Hyde Park,Amatucci Playground,City of Boston,3,0.44867941,Park_Play_Fields
+Hyde Park,Moynihan Playground,Commonwealth of Massachusetts,3,7.18571325,Park_Play_Fields
+Hyde Park,Camp Meigs,Commonwealth of Massachusetts,3,2.86583949,Park_Play_Fields
+Hyde Park,Jeremiah Hurley Memorial Park,City of Boston,1,0.07,Malls_Sqs_Plaza
+Hyde Park,Williams Square,City of Boston,1,0.03805675,Malls_Sqs_Plaza
+Hyde Park,Dana Avenue Urban Wild I,Commonwealth of Massachusetts,6,0.81968055,Natural_Areas
+Hyde Park,Martini Playground,Commonwealth of Massachusetts,2,5.77995247,Parks_Reserv_Beaches
+Hyde Park,Mother Brook I,Private,6,0.37013097,Natural_Areas
+Hyde Park,Reservation Road Park,City of Boston,3,6.19562996,Park_Play_Fields
+Hyde Park,Neponset Valley Parkway,Commonwealth of Massachusetts,2,5.4959161,Parks_Reserv_Beaches
+Hyde Park,Stony Brook Reservation I,Commonwealth of Massachusetts,2,292.26,Parks_Reserv_Beaches
+Hyde Park,Neponset River Corridor,Private,6,1.1875683,Natural_Areas
+Hyde Park,Truman Parkway,Commonwealth of Massachusetts,2,2.71476245,Parks_Reserv_Beaches
+Hyde Park,West Austin Rock,City of Boston,6,0.3,Natural_Areas
+Hyde Park,McGann Park,City of Boston,3,0.88,Park_Play_Fields
+Hyde Park,Foley Square,City of Boston,1,0.14,Malls_Sqs_Plaza
+Hyde Park,Jones Square,City of Boston,1,0.04,Malls_Sqs_Plaza
+Hyde Park,Shempa Square,MBTA,1,0.03,Malls_Sqs_Plaza
+Hyde Park,Webster Square,City of Boston,1,0.05,Malls_Sqs_Plaza
+Hyde Park,Woodworth Square,City of Boston,1,0.03,Malls_Sqs_Plaza
+Hyde Park,Dana Avenue Urban Wild II,City of Boston,6,0.03243961,Natural_Areas
+Hyde Park,Dell Rock II,City of Boston,6,0.04,Natural_Areas
+Hyde Park,Blake Estates Urban Wild,City of Boston,6,0.34,Natural_Areas
+Hyde Park,Railroad Avenue,Commonwealth of Massachusetts,6,1.1,Natural_Areas
+Hyde Park,Stony Brook Reservation III,Commonwealth of Massachusetts,2,65.66,Parks_Reserv_Beaches
+Hyde Park,George Wright Golf Course,City of Boston,3,156.37,Park_Play_Fields
+Hyde Park,Cleary Square Plaza,"
+City of Boston",1,0.07,Malls_Sqs_Plaza
+Hyde Park,Neponset River Reservation I,Commonwealth of Massachusetts,2,183.32,Parks_Reserv_Beaches
+Hyde Park,Ross Playground,City of Boston,3,13.04038894,Park_Play_Fields
+Jamaica Plain,Mozart Street Playground,City of Boston,3,0.8062696,Park_Play_Fields
+Jamaica Plain,Paul Gore/Beecher Street Garden,BNAN,5,0.50768117,Community_Gardens
+Jamaica Plain,Beecher Street Play Area,City of Boston,3,0.1742426,Park_Play_Fields
+Jamaica Plain,Murphy Playground,City of Boston,3,2.59767464,Park_Play_Fields
+Jamaica Plain,Lawrence Farm,Private,6,41.7049113,Natural_Areas
+Jamaica Plain,Soldier's Monument,City of Boston,1,0.13268804,Malls_Sqs_Plaza
+Jamaica Plain,Forbes Street Garden,BNAN,5,0.37078302,Community_Gardens
+Jamaica Plain,English H.S. Athletic Fields,City of Boston,3,7.63320583,Park_Play_Fields
+Jamaica Plain,Johnson Park II,City of Boston,3,0.17063559,Park_Play_Fields
+Jamaica Plain,Johnson Park I,Commonwealth of Massachusetts,3,2.60085765,Park_Play_Fields
+Jamaica Plain,Mahoney Square,City of Boston,1,0.06021515,Malls_Sqs_Plaza
+Jamaica Plain,Hellenic College Athletic Field,Private,3,3.40660796,Park_Play_Fields
+Jamaica Plain,Hellenic Hill I,Private,6,17.69531095,Natural_Areas
+Jamaica Plain,Back of the Hill Urban Wild,City of Boston,6,3.71620564,Natural_Areas
+Jamaica Plain,Hall/Boynton Street Garden,MBTA,5,0.13731616,Community_Gardens
+Jamaica Plain,Anson Street Garden,MBTA,5,0.16933221,Community_Gardens
+Jamaica Plain,King Street Play Area,City of Boston,3,0.13,Park_Play_Fields
+Jamaica Plain,Jeep Jones Park,City of Boston,3,1.82,Park_Play_Fields
+Jamaica Plain,Linwood Park,City of Boston,1,0.07383864,Malls_Sqs_Plaza
+Jamaica Plain,Kittredge Park,City of Boston,1,0.11595123,Malls_Sqs_Plaza
+Jamaica Plain,Rockledge Street Urban Wild,City of Boston,6,0.53148566,Natural_Areas
+Jamaica Plain,Father Jack Play Area,City of Boston,3,0.3170537,Park_Play_Fields
+Jamaica Plain,Flaherty Playground,City of Boston,3,1.31078198,Park_Play_Fields
+Jamaica Plain,Marcella Playground,City of Boston,3,5.08980387,Park_Play_Fields
+Jamaica Plain,Highland Park,City of Boston,3,3.63253278,Park_Play_Fields
+Jamaica Plain,Cedar Square,City of Boston,3,0.62313931,Park_Play_Fields
+Jamaica Plain,Cedar Street Garden II,BRA,5,0.07601427,Community_Gardens
+Jamaica Plain,Cedar Street Garden I,City of Boston,5,0.41746058,Community_Gardens
+Jamaica Plain,Margaret Wright Memorial Garden,Community Group/Nonprofit,5,0.13337245,Community_Gardens
+Jamaica Plain,St. Monica's,Private,6,0.61903157,Natural_Areas
+Jamaica Plain,Granada Park Garden,BNAN,5,0.29974302,Community_Gardens
+Jamaica Plain,Egleston Community Garden,Private,5,0.24067093,Community_Gardens
+Jamaica Plain,Waldren Road Garden,City of Boston,5,0.09203198,Community_Gardens
+Jamaica Plain,Parkman Memorial,City of Boston,3,6.70969084,Park_Play_Fields
+Jamaica Plain,Highland Park 400 Garden,Community Group/Nonprofit,5,0.64040972,Community_Gardens
+Jamaica Plain,Bowditch Garden,Private,5,0.13576334,Community_Gardens
+Jamaica Plain,Minton Stable Garden,BNAN,5,1.2,Community_Gardens
+Jamaica Plain,McBride Garden,MBTA,5,0.06163187,Community_Gardens
+Jamaica Plain,White Stadium,City of Boston,3,12.57331008,Park_Play_Fields
+Jamaica Plain,South Street Mall & Courts,City of Boston,3,0.08138799,Park_Play_Fields
+Jamaica Plain,First Church Cemetery,Private,4,0.62830435,Burial_Grounds
+Jamaica Plain,Roxbury Heritage State Park II,City of Boston,3,0.35,Park_Play_Fields
+Jamaica Plain,Kittredge-Linwood Parcel,BNAN,7,0.1638802,Park_Play_Fields
+Jamaica Plain,St Rose Street Garden,BNAN,5,0.0780558,Community_Gardens
+Jamaica Plain,Centre Place Garden,City of Boston,5,0.13660536,Community_Gardens
+Jamaica Plain,Highland Avenue Community Garden,BNAN,5,0.10061459,Community_Gardens
+Jamaica Plain,Allan Crite Garden I,City of Boston,5,0.4036074,Community_Gardens
+Jamaica Plain,Lamartine/Hubbard Streets Garden,MBTA,5,0.06265665,Community_Gardens
+Jamaica Plain,Lawndale Terrace Garden,MBTA,5,0.09,Community_Gardens
+Jamaica Plain,Williams Street I,Private,6,2.1,Natural_Areas
+Jamaica Plain,Oakview Terrace,City of Boston,1,0.10007451,Malls_Sqs_Plaza
+Jamaica Plain,Jamaicaway,City of Boston,2,4.7210912,Parks_Reserv_Beaches
+Jamaica Plain,Perkins Street,Commonwealth of Massachusetts,2,0.22700171,Parks_Reserv_Beaches
+Jamaica Plain,Chestnut Street,Commonwealth of Massachusetts,2,1.03901792,Parks_Reserv_Beaches
+Jamaica Plain,Hellenic Hill II,Private,6,6.37162311,Natural_Areas
+Jamaica Plain,Williams Street III,City of Boston,6,0.31,Natural_Areas
+Jamaica Plain,American Legion Highway,City of Boston,2,6.77872585,Parks_Reserv_Beaches
+Jamaica Plain,Parley Vale Preserve,Private,6,0.70082482,Natural_Areas
+Jamaica Plain,Arborway Overpass Path,Commonwealth of Massachusetts,2,1.16375787,Parks_Reserv_Beaches
+Jamaica Plain,Franklin Park Zoo,City of Boston,3,63.82,Park_Play_Fields
+Jamaica Plain,Bromley Heath Play Area,City of Boston,3,0.82120332,Park_Play_Fields
+Jamaica Plain,Oakdale Street Community Garden,MBTA,5,0.15597314,Community_Gardens
+Jamaica Plain,Starr Lane Park,City of Boston,5,0.06203976,Community_Gardens
+Jamaica Plain,Agassiz Community & School Garden,City of Boston,5,0.1863999,Community_Gardens
+Jamaica Plain,Franklin Park II,City of Boston,3,16.44,Park_Play_Fields
+Jamaica Plain,Allan Crite Garden II,BRA,5,0.04,Community_Gardens
+Jamaica Plain,John Eliot Square Urban Wild,BNAN,6,0.08,Natural_Areas
+Jamaica Plain,Egleston Plaza I,City of Boston,1,0.12,Malls_Sqs_Plaza
+Jamaica Plain,Egleston Plaza II,City of Boston,1,0.01,Malls_Sqs_Plaza
+Jamaica Plain,Egleston Square Peace Garden,Private,5,0.12,Community_Gardens
+Jamaica Plain,Arborway II,Commonwealth of Massachusetts,2,1.15,Parks_Reserv_Beaches
+Jamaica Plain,Back Bay Fens,City of Boston,3,70.1,Park_Play_Fields
+Jamaica Plain,Riverway I,City of Boston,3,17.18,Park_Play_Fields
+Jamaica Plain,Riverway III,City of Boston,3,5.3,Park_Play_Fields
+Jamaica Plain,Riverway IV,Commonwealth of Massachusetts,2,1.91,Parks_Reserv_Beaches
+Jamaica Plain,Jamaica Pond Park,City of Boston,3,97.74,Park_Play_Fields
+Jamaica Plain,Agassiz Road,Commonwealth of Massachusetts,2,0.6,Parks_Reserv_Beaches
+Jamaica Plain,Boylston Street I,City of Boston,2,0.62,Parks_Reserv_Beaches
+Jamaica Plain,Boylston Street II,Commonwealth of Massachusetts,2,2.4,Parks_Reserv_Beaches
+Jamaica Plain,The Fenway II,Commonwealth of Massachusetts,2,0.77,Parks_Reserv_Beaches
+Jamaica Plain,Park Drive I,City of Boston,2,5.1,Parks_Reserv_Beaches
+Jamaica Plain,Park Drive II,Commonwealth of Massachusetts,2,1.38,Parks_Reserv_Beaches
+Jamaica Plain,Fire Alarm House Grounds,City of Boston,3,0.84,Park_Play_Fields
+Jamaica Plain,Riverway II,Commonwealth of Massachusetts,2,2.36,Parks_Reserv_Beaches
+Jamaica Plain,Centre Street I,Commonwealth of Massachusetts,2,2.25,Parks_Reserv_Beaches
+Jamaica Plain,Centre Street III,City of Boston,2,0.01,Parks_Reserv_Beaches
+Jamaica Plain,Brookside Community Garden,BNAN,5,0.12,Community_Gardens
+Jamaica Plain,Lambert Avenue Playground,City of Boston,3,0.66,Park_Play_Fields
+Jamaica Plain,Southwest Corridor Community Farm,Community Group/Nonprofit,5,0.61160726,Community_Gardens
+Jamaica Plain,Nira Avenue Garden,BNAN,5,0.16903517,Community_Gardens
+Jamaica Plain,Arcola Park Garden,BNAN,1,0.07232682,Malls_Sqs_Plaza
+Jamaica Plain,Roxbury Heritage State Park I,Commonwealth of Massachusetts,3,2.81,Park_Play_Fields
+Jamaica Plain,Rossmore/Stedman Park,City of Boston,3,0.07394843,Park_Play_Fields
+Jamaica Plain,Brewer-Burroughs Tot Lot,City of Boston,3,0.18565302,Park_Play_Fields
+Jamaica Plain,The Fenway I,City of Boston,2,50.28,Parks_Reserv_Beaches
+Jamaica Plain,Lawn Street Garden,Private,5,0.13142626,Community_Gardens
+Jamaica Plain,Walden Street Community Garden,Community Group/Nonprofit,5,0.24024827,Community_Gardens
+Jamaica Plain,Hennigan Schoolyard,City of Boston,3,1.86,Park_Play_Fields
+Jamaica Plain,Round Hill Street Garden,BNAN,5,0.06917935,Community_Gardens
+Jamaica Plain,Heath Square,City of Boston,1,0.07251873,Malls_Sqs_Plaza
+Jamaica Plain,Judge Street,Private,6,0.14697678,Natural_Areas
+Jamaica Plain,Willow Pond Meadow,Commonwealth of Massachusetts,3,6.29554264,Park_Play_Fields
+Jamaica Plain,Olmsted Park,City of Boston,3,42.95562559,Park_Play_Fields
+Jamaica Plain,McLaughlin Playground,City of Boston,3,11.72747534,Park_Play_Fields
+Jamaica Plain,Parker Hilltop,Private,6,1.58002668,Natural_Areas
+Jamaica Plain,Iroquois Street Woods,Private,6,1.04421027,Natural_Areas
+Jamaica Plain,Parker/Terrace,City of Boston,7,1.32,Natural_Areas
+Jamaica Plain,Butterfly Garden,Community Group/Nonprofit,3,0.27,Park_Play_Fields
+Jamaica Plain,BNAN Parcel,BNAN,6,0.27,Natural_Areas
+Jamaica Plain,Mission Hill Community Garden I,BNAN,5,0.34,Community_Gardens
+Jamaica Plain,Mission Hill Community Garden II,BRA,5,0.15584958,Community_Gardens
+Jamaica Plain,Nira Rock,City of Boston,6,1.37,Natural_Areas
+Jamaica Plain,Jefferson Playground,City of Boston,3,3.29588256,Park_Play_Fields
+Jamaica Plain,Chapman,Private,6,5.84964753,Natural_Areas
+Jamaica Plain,Showa,Private,6,19.70244265,Natural_Areas
+Jamaica Plain,Daughters of St. Paul,Private,6,11.70791948,Natural_Areas
+Jamaica Plain,Arborway I,Commonwealth of Massachusetts,2,12.45,Parks_Reserv_Beaches
+Jamaica Plain,Amory Street Park,City of Boston,3,0.12,Park_Play_Fields
+Jamaica Plain,Kelly Outdoor Skating Rink,MBTA,3,0,Park_Play_Fields
+Jamaica Plain,Hernandez Schoolyard,City of Boston,3,0,Park_Play_Fields
+Jamaica Plain,Dixwell Street Playlot,City of Boston,3,0,Park_Play_Fields
+Jamaica Plain,South Street BHA Play Area,BHA,3,0.1,Park_Play_Fields
+Jamaica Plain,Manning Schoolyard,City of Boston,3,0.22,Park_Play_Fields
+Jamaica Plain,Franklin Park,City of Boston,3,392.16,Park_Play_Fields
+Jamaica Plain,Arnold Arboretum,City of Boston,3,224.26,Park_Play_Fields
+Jamaica Plain,Forbes Street Playground,City of Boston,3,0.09,Park_Play_Fields
+Jamaica Plain,Southwest Corridor Park,MBTA,2,47.68,Parks_Reserv_Beaches
+Jamaica Plain,Paul Gore Street Park,City of Boston,3,0.73,Park_Play_Fields
+Jamaica Plain,Egleston Community Orchard,City of Boston,5,0.08,Community Garden
+Jamaica Plain,South St BHA Community Garden,City of Boston,5,0.21,Community Garden
+Jamaica Plain,Walnut Park,City of Boston,1,0.06,Malls_Sqs_Plaza
+Leather District,Granary Burying Ground,City of Boston,4,1.86,Burial_Grounds
+Leather District,Norman B. Leventhal Park,Private,3,1.54521864,Park_Play_Fields
+Leather District,School Street Park,BRA,1,0.08,Malls_Sqs_Plaza
+Leather District,Winthrop Square,City of Boston,1,0.15268647,Malls_Sqs_Plaza
+Leather District,Grain Exchange Plaza,City of Boston,1,0.05182403,Malls_Sqs_Plaza
+Leather District,Reggie Wong Park,MassDOT,3,0.34,Park_Play_Fields
+Leather District,Urban Arboretum,MassDOT,1,1.95,Malls_Sqs_Plaza
+Leather District,Lincoln Street Green,MassDOT,1,0.18,Malls_Sqs_Plaza
+Leather District,Leather District Park,MassDOT,1,0.42,Malls_Sqs_Plaza
+Leather District,Chinatown Park,MassDOT,1,0.61,Malls_Sqs_Plaza
+Leather District,RFK Greenway I,MassDOT,1,0.24,Malls_Sqs_Plaza
+Leather District,Dewey Square Parks,MassDOT,1,2.64,Malls_Sqs_Plaza
+Leather District,Dewey Square Plaza,MassDOT,1,0.58,Malls_Sqs_Plaza
+Leather District,Federal Reserve Bank Harborwalk,City of Boston,1,0.08,Malls_Sqs_Plaza
+Leather District,Tufts Wharf Harborwalk,Private,1,0.73,Malls_Sqs_Plaza
+Leather District,Russia Wharf Harborwalk,Private,1,0.06,Malls_Sqs_Plaza
+Leather District,Atlantic Avenue Plantings,MBTA,1,0.58,Malls_Sqs_Plaza
+Leather District,I-90 Interchange,MassDOT,7,1.54,Malls_Sqs_Plaza
+Leather District,Wharf District Park,MassDOT,1,4.71,Malls_Sqs_Plaza
+Leather District,Oxford Place Plaza,Private,3,0.05,Malls_Sqs_Plaza
+Leather District,Federal Reserve Plaza,United States of America,1,2.09,Malls_Sqs_Plaza
+Leather District,RFK Greenway II,City of Boston,1,0.29,Malls_Sqs_Plaza
+Leather District,China Gate Plaza,City of Boston,1,0.14,Malls_Sqs_Plaza
+Leather District,Independence Wharf Harborwalk,Private,1,0.18,Malls_Sqs_Plaza
+Leather District,Mary Soo Hoo Park,MassDOT,1,0.07,Park_Play_Fields
+Leather District,Liberty Tree Park,City of Boston,1,0.09,Malls_Sqs_Plaza
+Leather District,Old City Hall Grounds,BRA,1,0.22675871,Malls_Sqs_Plaza
+Longwood Medical Area,Oscar Tugo Circle,City of Boston,1,0.05755321,Malls_Sqs_Plaza
+Longwood Medical Area,Emanuel College Grounds,Private,1,3.62166311,Malls_Sqs_Plaza
+Longwood Medical Area,Mass Art Park,City of Boston,1,0.15233822,Malls_Sqs_Plaza
+Longwood Medical Area,Beth Israel/Deaconess Plaza,Private,1,0.50150988,Malls_Sqs_Plaza
+Longwood Medical Area,Mass Art Campus,Commonwealth of Massachusetts,1,0.31306769,Malls_Sqs_Plaza
+Longwood Medical Area,Back Bay Fens,City of Boston,3,70.1,Park_Play_Fields
+Longwood Medical Area,The Fenway II,Commonwealth of Massachusetts,2,0.77,Parks_Reserv_Beaches
+Longwood Medical Area,Riverway II,Commonwealth of Massachusetts,2,2.36,Parks_Reserv_Beaches
+Longwood Medical Area,The Fenway I,City of Boston,2,50.28,Parks_Reserv_Beaches
+Longwood Medical Area,Avenue Louis Pasteur,City of Boston,2,1.49,Parks_Reserv_Beaches
+Longwood Medical Area,Windsor School Athletic Field,Private,3,1.37,Park_Play_Fields
+Mattapan,Thetford/Evans Playground,City of Boston,3,0.68,Park_Play_Fields
+Mattapan,Gladeside I,City of Boston,6,10.3057581,Natural_Areas
+Mattapan,Willowwood Rock,City of Boston,6,0.53229858,Natural_Areas
+Mattapan,Gladeside II,Private,6,0.89854126,Natural_Areas
+Mattapan,Msgr. Francis A. Ryan Park,Commonwealth of Massachusetts,3,6.14129551,Park_Play_Fields
+Mattapan,Walker Playground,City of Boston,3,5.9534334,Park_Play_Fields
+Mattapan,Walsh Playground,City of Boston,3,6.94564498,Park_Play_Fields
+Mattapan,Dorchester South Burying Ground,City of Boston,4,1.94260591,Burial_Grounds
+Mattapan,Dorchester Park,City of Boston,3,27.29735362,Park_Play_Fields
+Mattapan,Adams Rock,Private,6,0.21706994,Natural_Areas
+Mattapan,Ventura Playground,Commonwealth of Massachusetts,3,1.30990583,Park_Play_Fields
+Mattapan,Granite Avenue Ledge,Private,6,0.38129459,Natural_Areas
+Mattapan,YMCA Community Park,Private,3,1.02749317,Park_Play_Fields
+Mattapan,Cedar Grove Cemetery,Private,4,54.21744999,Burial_Grounds
+Mattapan,Huntoon Rock,Private,6,0.16699807,Natural_Areas
+Mattapan,Peabody Square,City of Boston,1,0.04662133,Malls_Sqs_Plaza
+Mattapan,Morton Street,Commonwealth of Massachusetts,2,0.76090289,Parks_Reserv_Beaches
+Mattapan,Babson-Cookson Tract,City of Boston,6,2.41,Natural_Areas
+Mattapan,Neponset River Reservation II,MBTA,2,0.78,Parks_Reserv_Beaches
+Mattapan,Neponset River Reservation I,Commonwealth of Massachusetts,2,183.32,Parks_Reserv_Beaches
+Mission Hill,Wentworth Field,Private,3,2.98150699,Park_Play_Fields
+Mission Hill,Stony Brook Sewer Easement,Private,1,0.28868284,Malls_Sqs_Plaza
+Mission Hill,Mission Hill Playground,City of Boston,3,2.68681793,Park_Play_Fields
+Mission Hill,Gibbons Playground,City of Boston,3,0.11,Park_Play_Fields
+Mission Hill,Tobin Community Center Garden,City of Boston,5,0.2966297,Community_Gardens
+Mission Hill,Whittier Playground,City of Boston,3,0.27550283,Park_Play_Fields
+Mission Hill,John Eliot Square,City of Boston,1,0.07440906,Malls_Sqs_Plaza
+Mission Hill,Madison Park H.S. Athletic Fields,City of Boston,3,9.60564824,Park_Play_Fields
+Mission Hill,Carter Playground,City of Boston,3,4.91455022,Park_Play_Fields
+Mission Hill,Harvard Medical School Quadrangle,Private,1,1.71223131,Malls_Sqs_Plaza
+Mission Hill,Wentworth Grounds,Private,1,3.28579794,Malls_Sqs_Plaza
+Mission Hill,Frederick Douglass Green,Private,3,0.92205578,Park_Play_Fields
+Mission Hill,First Church Yard,Private,1,1.6,Park_Play_Fields
+Mission Hill,Huntington-Vancouver Triangle,Private,1,0.14,Malls_Sqs_Plaza
+Mission Hill,Huntington-Hemenway Mall,City of Boston,1,0.33,Malls_Sqs_Plaza
+Mission Hill,Brigham Circle Plaza,Private,1,0.22,Malls_Sqs_Plaza
+Mission Hill,Madison Park Village CG,City of Boston,5,0.24,Community_Gardens
+Mission Hill,Schroeder Plaza,City of Boston,1,0.28,Malls_Sqs_Plaza
+Mission Hill,Southwest Corridor Park Extension,BHA,3,0.17754467,Park_Play_Fields
+Mission Hill,Back Bay Fens,City of Boston,3,70.1,Park_Play_Fields
+Mission Hill,Riverway IV,Commonwealth of Massachusetts,2,1.91,Parks_Reserv_Beaches
+Mission Hill,Boylston Street II,Commonwealth of Massachusetts,2,2.4,Parks_Reserv_Beaches
+Mission Hill,The Fenway II,Commonwealth of Massachusetts,2,0.77,Parks_Reserv_Beaches
+Mission Hill,Riverway II,Commonwealth of Massachusetts,2,2.36,Parks_Reserv_Beaches
+Mission Hill,Riverway V,City of Boston,2,0.23,Parks_Reserv_Beaches
+Mission Hill,Kevin Fitzgerald Park,Community Group/Nonprofit,3,6.58,Park_Play_Fields
+Mission Hill,The Fenway I,City of Boston,2,50.28,Parks_Reserv_Beaches
+Mission Hill,Hanlon Square,City of Boston,1,0.04,Malls_Sqs_Plaza
+Mission Hill,Joslin Park,City of Boston,1,0.30400885,Malls_Sqs_Plaza
+Mission Hill,Hillside/Calumet,City of Boston,7,1.26,Natural_Areas
+Mission Hill,Allegheny Street I,Private,6,0.22,Natural_Areas
+Mission Hill,Allegheny Street II,Private,6,0.74,Natural_Areas
+Mission Hill,Justice Gourdin Park I,City of Boston,1,0.53,Malls_Sqs_Plaza
+Mission Hill,Melnea Cass Boulevard I,Commonwealth of Massachusetts,2,3.04353461,Parks_Reserv_Beaches
+Mission Hill,Mission Main Park,BHA,3,0.71,Park_Play_Fields
+Mission Hill,Tree House Plaza,Commonwealth of Massachusetts,1,0.18,Malls_Sqs_Plaza
+Mission Hill,Alice Taylor Homes Playlots,BHA,3,0.15,Park_Play_Fields
+Mission Hill,Mission Main Longwood Gate,BHA,1,0.11,Malls_Sqs_Plaza
+Mission Hill,Mission Main Playlots,BHA,3,0.82,Park_Play_Fields
+Mission Hill,Mission Church Gardens,Private,3,1.13,Park_Play_Fields
+Mission Hill,Southwest Corridor Park,MBTA,2,47.68,Parks_Reserv_Beaches
+North End,Somerset Street Plaza,Commonwealth of Massachusetts,1,0.93030039,Malls_Sqs_Plaza
+North End,DeFilippo Playground,City of Boston,3,1.11555607,Park_Play_Fields
+North End,Copp's Hill Burying Ground,City of Boston,4,1.98141665,Burial_Grounds
+North End,Copp's Hill Terrace,City of Boston,1,0.61198844,Malls_Sqs_Plaza
+North End,Foster Street Play Area,City of Boston,3,0.10503572,Park_Play_Fields
+North End,Charter Street Park,City of Boston,3,0.23534031,Park_Play_Fields
+North End,Paul Revere Mall,City of Boston,1,0.78520749,Malls_Sqs_Plaza
+North End,Polcari Park,City of Boston,3,0.28857259,Park_Play_Fields
+North End,Cutillo Park,City of Boston,3,0.28491861,Park_Play_Fields
+North End,City Hall Plaza,BRA,1,5.93146518,Malls_Sqs_Plaza
+North End,Cardinal Cushing Park I,BRA,1,0.35,Malls_Sqs_Plaza
+North End,Pemberton Square I,BRA,1,0.18485239,Malls_Sqs_Plaza
+North End,Pemberton Square II,City of Boston,1,1.06216494,Malls_Sqs_Plaza
+North End,Angell Memorial Square,City of Boston,1,0.17663084,Malls_Sqs_Plaza
+North End,Union Street Park I,BRA,1,0.51,Malls_Sqs_Plaza
+North End,Langone Park,City of Boston,3,2.18,Park_Play_Fields
+North End,Prince Street Park,Commonwealth of Massachusetts,2,1.28,Parks_Reserv_Beaches
+North End,Ausonia Plaza,BRA,1,0.19623955,Malls_Sqs_Plaza
+North End,Rachel Revere Square,City of Boston,1,0.07859187,Malls_Sqs_Plaza
+North End,Quincy Market Square,BRA,1,1.56,Malls_Sqs_Plaza
+North End,Richmond & North Streets Park I,MassDOT,3,0.09,Park_Play_Fields
+North End,Nashua Street Park,Commonwealth of Massachusetts,2,2.03353691,Parks_Reserv_Beaches
+North End,Jenney Plaza,Private,1,0.12596551,Malls_Sqs_Plaza
+North End,Marketplace Plaza I,BRA,1,0.29,Malls_Sqs_Plaza
+North End,Marketplace Plaza II,Private,1,0.1,Malls_Sqs_Plaza
+North End,Liberty Square,City of Boston,1,0.02934972,Malls_Sqs_Plaza
+North End,New Chardon Square,Commonwealth of Massachusetts,1,1.91,Malls_Sqs_Plaza
+North End,Faneuil Square,City of Boston,1,0.82,Malls_Sqs_Plaza
+North End,North Point Park,Commonwealth of Massachusetts,3,1.77174555,Park_Play_Fields
+North End,South Bank Park,Commonwealth of Massachusetts,2,2.39,Parks_Reserv_Beaches
+North End,West End Park,MassDOT,1,0.14,Malls_Sqs_Plaza
+North End,Armenian Heritage Park,MassDOT,1,0.25,Malls_Sqs_Plaza
+North End,North Street Park,MassDOT,1,0.24,Malls_Sqs_Plaza
+North End,Endicott Triangle,MassDOT,1,0.35,Malls_Sqs_Plaza
+North End,North End Park,MassDOT,1,2.83,Malls_Sqs_Plaza
+North End,Wharf District Park,MassDOT,1,4.71,Malls_Sqs_Plaza
+North End,Pemberton Square Access,City of Boston,1,0.13,Malls_Sqs_Plaza
+North End,West End Recreation Complex,Private,3,3.42,Park_Play_Fields
+North End,Thoreau Path,Private,1,3.86,Malls_Sqs_Plaza
+North End,Valenti Square,Commonwealth of Massachusetts,1,0.09,Malls_Sqs_Plaza
+North End,Brooke Courthouse Plaza,Commonwealth of Massachusetts,1,0.24,Malls_Sqs_Plaza
+North End,Union Street Park II,City of Boston,1,0.03,Malls_Sqs_Plaza
+North End,Richmond & North Streets Park II,MassDOT,3,0.28,Park_Play_Fields
+North End,Government Center Garage Plaza,Private,1,0.94,Malls_Sqs_Plaza
+North End,Cardinal Cushing Park II,City of Boston,1,0.07,Malls_Sqs_Plaza
+North End,Bowdoin Mall,City of Boston,1,0.5,Malls_Sqs_Plaza
+North End,Hawkins-New Sudbury Mall I,BRA,1,0.1,Malls_Sqs_Plaza
+North End,Hawkins-New Sudbury Mall II,City of Boston,1,0.07,Malls_Sqs_Plaza
+North End,Ashburton Place Plaza,Commonwealth of Massachusetts,1,0.82,Malls_Sqs_Plaza
+North End,Aquarium Harborwalk II,BRA,1,0.5,Malls_Sqs_Plaza
+North End,India Wharf Harborwalk,Private,1,0.41,Malls_Sqs_Plaza
+North End,Rowe's Wharf Harborwalk,Private,1,1.26,Malls_Sqs_Plaza
+North End,400R Atlantic Avenue Harborwalk,Private,1,0.05,Malls_Sqs_Plaza
+North End,408 Atlantic Avenue Harborwalk,United States of America,1,0.03,Malls_Sqs_Plaza
+North End,Commercial Wharf Harborwalk,Private,1,0.19,Malls_Sqs_Plaza
+North End,Joe's American Harborwalk,Private,1,0.05,Malls_Sqs_Plaza
+North End,North Square,City of Boston,1,0.06604965,Malls_Sqs_Plaza
+North End,Aquarium Plaza,Private,1,0.46,Malls_Sqs_Plaza
+North End,Aquarium Harborwalk I,Private,1,0.53,Malls_Sqs_Plaza
+North End,Webster Avenue Playground,City of Boston,3,0.06,Park_Play_Fields
+North End,Central Court,Private,1,0.07,Malls_Sqs_Plaza
+North End,Portal Park,MassDOT,1,0.36,Malls_Sqs_Plaza
+North End,Christopher Columbus Park,City of Boston,3,4.74438387,Park_Play_Fields
+North End,Long Wharf,BRA,1,3.9,Malls_Sqs_Plaza
+North End,Long Wharf Boat Access,BRA,1,0,Malls_Sqs_Plaza
+North End,Puopolo Playground,City of Boston,3,2.09019043,Park_Play_Fields
+North End,Old City Hall Grounds,BRA,1,0.22675871,Malls_Sqs_Plaza
+North End,King's Chapel Burying Ground,City of Boston,4,0.43054804,Burial_Grounds
+North End,Mirabella Pool,City of Boston,3,1.37,Park_Play_Fields
+Roslindale,Connell Fields/Hickey Courts,Commonwealth of Massachusetts,3,4.1483742,Park_Play_Fields
+Roslindale,Weider Park,Commonwealth of Massachusetts,3,6.91931115,Park_Play_Fields
+Roslindale,Monterey Hilltop I,City of Boston,6,4.12374269,Natural_Areas
+Roslindale,Monterey Hilltop II,Private,6,0.10408992,Natural_Areas
+Roslindale,Sherrin Woods I,City of Boston,6,23.81339751,Natural_Areas
+Roslindale,Oak Lawn Cemetery,Private,4,10.40684866,Burial_Grounds
+Roslindale,Euclid Street,Private,7,3.84836232,Natural_Areas
+Roslindale,Stony Brook Recreation Complex,Commonwealth of Massachusetts,3,27.39,Park_Play_Fields
+Roslindale,Pleasant View I,City of Boston,6,0.07,Natural_Areas
+Roslindale,Pleasant View II,Private,6,0.17,Natural_Areas
+Roslindale,Oak Lawn Golf Range,Private,7,22.92,Park_Play_Fields
+Roslindale,Woodhaven,City of Boston,6,1.1823713,Natural_Areas
+Roslindale,Kennedy Playground,Commonwealth of Massachusetts,3,0.26002942,Park_Play_Fields
+Roslindale,Forest Hills Cemetery,Private,4,243.7323322,Burial_Grounds
+Roslindale,Walter Street Cemetery,City of Boston,4,0.8659424,Burial_Grounds
+Roslindale,Weld Hill Tract,Private,3,14.11,Park_Play_Fields
+Roslindale,Pagel Playground,City of Boston,3,2.72504189,Park_Play_Fields
+Roslindale,Parkman Playground,City of Boston,3,2.06809445,Park_Play_Fields
+Roslindale,Leland Street Herb Garden,BNAN,5,0.25911714,Community_Gardens
+Roslindale,Fallon Field,City of Boston,3,7.51145116,Park_Play_Fields
+Roslindale,Poplar Street Play Area,City of Boston,3,0.44211382,Park_Play_Fields
+Roslindale,Southwest Boston Garden Club,MBTA,5,1.52021643,Community_Gardens
+Roslindale,Delano Park,City of Boston,1,0.20637203,Malls_Sqs_Plaza
+Roslindale,Toll Gate Cemetery,Private,4,0.90478525,Burial_Grounds
+Roslindale,Forest Hills Rotary,Commonwealth of Massachusetts,1,0.69082163,Malls_Sqs_Plaza
+Roslindale,Billings Field,City of Boston,3,10.77506733,Park_Play_Fields
+Roslindale,Westerly Burying Ground,City of Boston,4,0.90346258,Burial_Grounds
+Roslindale,Duffie Square,City of Boston,1,0.06040139,Malls_Sqs_Plaza
+Roslindale,Allandale Woods I,City of Boston,6,49.58,Natural_Areas
+Roslindale,Allandale Woods III,Private,6,16.72,Natural_Areas
+Roslindale,Bellevue Hill Reservation,Commonwealth of Massachusetts,2,26.78180477,Parks_Reserv_Beaches
+Roslindale,West Roxbury Parkway,Commonwealth of Massachusetts,2,31.76,Parks_Reserv_Beaches
+Roslindale,Dooley Playground,Commonwealth of Massachusetts,3,0.44495663,Park_Play_Fields
+Roslindale,Stony Brook Reservation I,Commonwealth of Massachusetts,2,292.26,Parks_Reserv_Beaches
+Roslindale,Clark/Cooper Community Garden,Private,5,3.55,Community_Gardens
+Roslindale,Kennedy Garden,Commonwealth of Massachusetts,5,0.15963181,Community_Gardens
+Roslindale,Allandale Field,Private,3,2.63,Park_Play_Fields
+Roslindale,Harvard Tract I,Private,3,5.03376834,Park_Play_Fields
+Roslindale,Harvard Tract III,Private,3,1.45477498,Park_Play_Fields
+Roslindale,Harvard Tract II,Private,3,5.26425599,Park_Play_Fields
+Roslindale,American Legion Highway,City of Boston,2,6.77872585,Parks_Reserv_Beaches
+Roslindale,Morton Street,Commonwealth of Massachusetts,2,0.76090289,Parks_Reserv_Beaches
+Roslindale,St Michael's Cemetery,Private,4,46.49983645,Burial_Grounds
+Roslindale,Harvard-Livermore Tract,Private,6,5.65144064,Natural_Areas
+Roslindale,Arborway Overpass Path,Commonwealth of Massachusetts,2,1.16375787,Parks_Reserv_Beaches
+Roslindale,Zero Quinn Way,City of Boston,3,0.03197035,Park_Play_Fields
+Roslindale,Allandale Woods ROW,Private,6,0.16,Natural_Areas
+Roslindale,Ernst Chery Jr. Playground,City of Boston,3,0.25,Park_Play_Fields
+Roslindale,South Street Community Garden,Commonwealth of Massachusetts,5,0.47012064,Community_Gardens
+Roslindale,McGann Park,City of Boston,3,0.88,Park_Play_Fields
+Roslindale,Mattahunt Woods III,City of Boston,6,3.57,Natural_Areas
+Roslindale,Bussey Brook Meadow II,MBTA,6,1.17,Natural_Areas
+Roslindale,St. John Chrysostom Tract,Private,6,4.31,Natural_Areas
+Roslindale,Allandale Woods II,City of Boston,6,10.59,Natural_Areas
+Roslindale,Mattahunt Woods II,Private,6,3.74,Natural_Areas
+Roslindale,Mattahunt Woods Buffer,Private,6,1.02,Natural_Areas
+Roslindale,Mattahunt School Woods,City of Boston,6,0.96,Natural_Areas
+Roslindale,Mattahunt Schoolyard,City of Boston,3,3.31,Park_Play_Fields
+Roslindale,Mattahunt School Entrance Plaza,City of Boston,1,0.37,Malls_Sqs_Plaza
+Roslindale,Currier Woods I,City of Boston,6,1.43,Natural_Areas
+Roslindale,Currier Woods II,Private,6,0.56,Natural_Areas
+Roslindale,Savannah Woods II,Private,6,0.73,Natural_Areas
+Roslindale,Canterbury Brookside II,Private,6,0.49,Natural_Areas
+Roslindale,Savannah Woods I,City of Boston,6,3.2,Natural_Areas
+Roslindale,Mattahunt Woods I,City of Boston,6,6.01,Natural_Areas
+Roslindale,Fairlawn Green,Private,1,1.15,Malls_Sqs_Plaza
+Roslindale,Hunt Playground II,City of Boston,3,0.15,Park_Play_Fields
+Roslindale,Roslindale Wetlands Urban Wild I,City of Boston,6,8.05,Natural_Areas
+Roslindale,Roslindale Wetlands Urban Wild II,Private,6,2.45,Natural_Areas
+Roslindale,Crane Ledge III,Private,7,25.06,Natural_Areas
+Roslindale,Crane Ledge I,City of Boston,7,1.45,Natural_Areas
+Roslindale,Crane Ledge II,Commonwealth of Massachusetts,7,0.2,Natural_Areas
+Roslindale,Sherrin Woods II,Private,6,1.11,Natural_Areas
+Roslindale,Woodhaven Street Lot,Private,7,1.2,Natural_Areas
+Roslindale,Orlando-Monterey Lot II,Private,7,0.21,Natural_Areas
+Roslindale,Bussey Brook Meadow I,City of Boston,6,24.68,Natural_Areas
+Roslindale,Arborway II,Commonwealth of Massachusetts,2,1.15,Parks_Reserv_Beaches
+Roslindale,Forest Hills Preserve,BHA,6,2.45,Natural_Areas
+Roslindale,Allandale Woods IV,Private,6,6.29,Natural_Areas
+Roslindale,Allandale Woods V,Private,6,2.78,Natural_Areas
+Roslindale,Recuperative Center Lawn,Private,3,0.31,Park_Play_Fields
+Roslindale,Duck Pond Outlet,Private,6,0.19,Natural_Areas
+Roslindale,Conley School Play Yard,City of Boston,3,1.42,Park_Play_Fields
+Roslindale,Centre Street II,Commonwealth of Massachusetts,2,0.19,Parks_Reserv_Beaches
+Roslindale,Centre Street I,Commonwealth of Massachusetts,2,2.25,Parks_Reserv_Beaches
+Roslindale,Centre Street V,City of Boston,2,0.26,Parks_Reserv_Beaches
+Roslindale,Centre Street IV,Commonwealth of Massachusetts,2,0.32,Parks_Reserv_Beaches
+Roslindale,Pendergast Entrance,Private,6,1.03,Natural_Areas
+Roslindale,Emmel Square,City of Boston,1,0.02,Malls_Sqs_Plaza
+Roslindale,Boundary I,City of Boston,6,6.92577563,Natural_Areas
+Roslindale,Stony Brook Reservation III,Commonwealth of Massachusetts,2,65.66,Parks_Reserv_Beaches
+Roslindale,George Wright Golf Course,City of Boston,3,156.37,Park_Play_Fields
+Roslindale,DeForest Urban Wild II,Private,6,0.11,Natural_Areas
+Roslindale,DeForest Urban Wild I,City of Boston,6,0.91,Natural_Areas
+Roslindale,Healy Playground,City of Boston,3,9.53912629,Park_Play_Fields
+Roslindale,Arborway I,Commonwealth of Massachusetts,2,12.45,Parks_Reserv_Beaches
+Roslindale,Forest Hills Station Mall,MBTA,1,1.33,Malls_Sqs_Plaza
+Roslindale,Philbrick Schoolyard,City of Boston,3,0,Community_Gardens
+Roslindale,Boston State Hospital Campus,Commonwealth of Massachusetts,3,17.69,Park_Play_Fields
+Roslindale,State Public Health Campus,Commonwealth of Massachusetts,3,11.81,Park_Play_Fields
+Roslindale,Olmsted Green Park,Private,3,0.09,Park_Play_Fields
+Roslindale,Franklin Park Zoo Parking/DCR,Commonwealth of Massachusetts,7,31,Park_Play_Fields
+Roslindale,Stony Brook Reservation II,Commonwealth of Massachusetts,2,141.89,Parks_Reserv_Beaches
+Roslindale,Stony Brook Commons Park,Private,3,1.53,Park_Play_Fields
+Roslindale,Adams Park,City of Boston,3,0.7,Park_Play_Fields
+Roslindale,Arnold Arboretum,City of Boston,3,224.26,Park_Play_Fields
+Roslindale,Hunt Playground,City of Boston,3,17.04561712,Park_Play_Fields
+Roslindale,Neponset River Reservation I,Commonwealth of Massachusetts,2,183.32,Parks_Reserv_Beaches
+Roslindale,Canterbury I,City of Boston,6,1.24,Natural_Areas
+Roslindale,Canterbury II,Private,3,3.8,Park_Play_Fields
+Roslindale,Canterbury III,Private,3,0.64,Park_Play_Fields
+Roslindale,Rowe Street Woods,BRA,6,2.64,Natural_Areas
+Roslindale,Mt. Hope Cemetery,City of Boston,4,125.04,Burial_Grounds
+Roslindale,Calvary Cemetery,Private,4,47.23,Burial_Grounds
+Roslindale,New Calvary Cemetery,Private,4,54.37336773,Burial_Grounds
+Roslindale,Pendergast Preventorium,Private,6,6.81237946,Natural_Areas
+Roslindale,Boston Nature Center_Visitor Ctr,City of Boston,3,2.33,Park_Play_Fields
+Roslindale,Boston Nature Center,Private,6,58.53,Natural_Areas
+Roslindale,VFW Parkway I,Commonwealth of Massachusetts,2,12.44,Parks_Reserv_Beaches
+Roslindale,VFW Parkway II,City of Boston,3,0.65,Park_Play_Fields
+Roslindale,Bellevue Street Green,City of Boston,1,0.17,Malls_Sqs_Plaza
+Roxbury,Nonquit Green,Community Group/Nonprofit,1,0.35746179,Malls_Sqs_Plaza
+Roxbury,Mullen Square,City of Boston,1,0.22675059,Malls_Sqs_Plaza
+Roxbury,Blue Hill Rock,BHA,6,0.4499289,Natural_Areas
+Roxbury,Franklin Field BHA Garden,City of Boston,5,0.43377787,Community_Gardens
+Roxbury,ReVision House Urban Farm #1,Private,5,0.35190856,Community_Gardens
+Roxbury,Lucerne/Balsam Street Garden,BNAN,5,0.22551695,Community_Gardens
+Roxbury,Dudley Town Common,City of Boston,1,0.62004086,Malls_Sqs_Plaza
+Roxbury,St James Street Park,City of Boston,3,0.38489331,Park_Play_Fields
+Roxbury,Malcolm X Park I,City of Boston,3,15.12,Park_Play_Fields
+Roxbury,Horatio Harris Park,City of Boston,3,2.52189718,Park_Play_Fields
+Roxbury,Trotter School Playground,City of Boston,3,1.24398438,Park_Play_Fields
+Roxbury,Crawford Street Playground,City of Boston,3,1.72194396,Park_Play_Fields
+Roxbury,Elm Hill Park,City of Boston,1,0.117909,Malls_Sqs_Plaza
+Roxbury,Quincy Street Play Area,City of Boston,3,0.53142047,Park_Play_Fields
+Roxbury,Savin/Maywood Street Garden,BNAN,5,0.46294139,Community_Gardens
+Roxbury,Howes Playground,City of Boston,3,1.89,Park_Play_Fields
+Roxbury,Little Scobie Playground,City of Boston,3,0.79435599,Park_Play_Fields
+Roxbury,Erie/Ellington Playground,City of Boston,3,0.3743838,Park_Play_Fields
+Roxbury,Puddingstone Park,City of Boston,3,0.55,Park_Play_Fields
+Roxbury,Bynoe Park,City of Boston,3,2.67,Park_Play_Fields
+Roxbury,Buena Vista,City of Boston,6,1.34549904,Natural_Areas
+Roxbury,St. Joseph's Garden,Private,5,0.2024447,Community_Gardens
+Roxbury,The Food Project Lot #1A,City of Boston,5,0.41,Community_Gardens
+Roxbury,Winthrop Street Garden,BNAN,5,0.1112406,Community_Gardens
+Roxbury,Nuestra Playground,BNAN,3,0.23341849,Park_Play_Fields
+Roxbury,Dennis Street Park,City of Boston,3,0.4160878,Park_Play_Fields
+Roxbury,Holborn Street Playlot,City of Boston,3,0.1,Park_Play_Fields
+Roxbury,Franklin Square,City of Boston,1,2.48280505,Malls_Sqs_Plaza
+Roxbury,South End South Burying Ground,City of Boston,4,1.47716127,Burial_Grounds
+Roxbury,Worcester Square,City of Boston,1,0.34375641,Malls_Sqs_Plaza
+Roxbury,Titus Sparrow Park,City of Boston,3,1.7513453,Park_Play_Fields
+Roxbury,Concord Square,City of Boston,1,0.14955097,Malls_Sqs_Plaza
+Roxbury,Saranac/New Castle Garden,MBTA,5,0.15201745,Community_Gardens
+Roxbury,Kendall & Lenox Streets Garden,Community Group/Nonprofit,5,0.43402264,Community_Gardens
+Roxbury,Ramsay Park,City of Boston,3,5.49340772,Park_Play_Fields
+Roxbury,Worcester Street Garden,Community Group/Nonprofit,5,0.57,Community_Gardens
+Roxbury,Wellington Green,Community Group/Nonprofit,5,0.04605808,Community_Gardens
+Roxbury,Blackwood/Claremont Garden,MBTA,5,0.09479788,Community_Gardens
+Roxbury,Greenwich/Cumberland Garden,MBTA,5,0.08851492,Community_Gardens
+Roxbury,Chester Square,City of Boston,1,0.89013036,Malls_Sqs_Plaza
+Roxbury,Mason Schoolyard,City of Boston,3,0.38047679,Park_Play_Fields
+Roxbury,Boys Club Park,Private,3,0.81512514,Park_Play_Fields
+Roxbury,Massachusetts Avenue Malls,City of Boston,1,0.43492921,Malls_Sqs_Plaza
+Roxbury,United Nbhd of Lower Roxbury CG,Commonwealth of Massachusetts,5,0.27680273,Community_Gardens
+Roxbury,Rutland Green,BRA,5,0.09157466,Community_Gardens
+Roxbury,Wellington Common,TTOR,5,0.04,Community_Gardens
+Roxbury,West Springfield Garden,Community Group/Nonprofit,5,0.16481075,Community_Gardens
+Roxbury,Greenwood Community Garden,BNAN,5,0.20391477,Community_Gardens
+Roxbury,Nellie Miranda Memorial Park,City of Boston,3,0.09,Park_Play_Fields
+Roxbury,Grove Hall Plaza,City of Boston,1,0.09250954,Malls_Sqs_Plaza
+Roxbury,Boston Medical Center Campus,Private,1,1.31,Malls_Sqs_Plaza
+Roxbury,Nonquit Street Garden,City of Boston,5,0.15,Community_Gardens
+Roxbury,American Legion Highway,City of Boston,2,6.77872585,Parks_Reserv_Beaches
+Roxbury,Monadnock Street Garden,BNAN,5,0.22428755,Community_Gardens
+Roxbury,Newland Street Park,City of Boston,3,0.13833095,Park_Play_Fields
+Roxbury,Northhampton St Community Garden,Community Group/Nonprofit,5,0.22024522,Community_Gardens
+Roxbury,Fenelon Street Playground,City of Boston,3,0.19,Park_Play_Fields
+Roxbury,NCAAA Museum Grounds,Private,1,0.8369024,Malls_Sqs_Plaza
+Roxbury,Bessie Barnes Garden,Community Group/Nonprofit,5,0.13321562,Community_Gardens
+Roxbury,Boston Evening Academy Garden,City of Boston,5,0.22,Community_Gardens
+Roxbury,Phyllis Wheatley/Warren Place,City of Boston,5,0.15,Community_Gardens
+Roxbury,ReVision House Urban Farm #2,Community Group/Nonprofit,5,0.37642885,Community_Gardens
+Roxbury,The Food Project Lot #3,Private,5,0.11455758,Community_Gardens
+Roxbury,Wakullah St. CG,BRA,5,0.10242284,Community_Gardens
+Roxbury,Warren Gardens Community Garden,Community Group/Nonprofit,5,0.25898998,Community_Gardens
+Roxbury,Washington Manor Community Garden,BHA,5,0.02207476,Community_Gardens
+Roxbury,Canterbury Brookside I,Commonwealth of Massachusetts,6,3.57,Natural_Areas
+Roxbury,Franklin Field BHA Green,City of Boston,3,0.7,Park_Play_Fields
+Roxbury,Franklin Field BHA Playground,City of Boston,3,0.39,Park_Play_Fields
+Roxbury,ELC Playlot,City of Boston,3,0.45,Park_Play_Fields
+Roxbury,Bessie Barnes Park,Community Group/Nonprofit,3,0.1,Park_Play_Fields
+Roxbury,Frederick Douglass Peace Garden,BRA,5,0.11,Community_Gardens
+Roxbury,Carter School Grounds,City of Boston,3,0.49,Park_Play_Fields
+Roxbury,Harrison Urban Garden,Private,5,0.2,Community_Gardens
+Roxbury,Cedar-Juniper Natural Area,BNAN,6,0.38,Natural_Areas
+Roxbury,Sharon's Park,City of Boston,1,0.31,Malls_Sqs_Plaza
+Roxbury,Washburn Street Green I,City of Boston,1,0.13,Malls_Sqs_Plaza
+Roxbury,59 Crawford Street Playground,Private,3,0.24748528,Park_Play_Fields
+Roxbury,Wolf Square,City of Boston,1,0.02,Malls_Sqs_Plaza
+Roxbury,Malcolm X Park II,City of Boston,3,0.19,Park_Play_Fields
+Roxbury,The Food Project Lot #1B,Private,5,0.19,Community_Gardens
+Roxbury,Shirley-Eustis House Grounds,Private,3,1.3,Park_Play_Fields
+Roxbury,Piano Craft Garden,Private,1,0.56,Malls_Sqs_Plaza
+Roxbury,Columbia Road Park,Commonwealth of Massachusetts,3,0.12,Park_Play_Fields
+Roxbury,Nancy Kafka Reserve,Private,6,0.71,Natural_Areas
+Roxbury,Maple-Sonoma Streets Community Park,City of Boston,3,0.26,Park_Play_Fields
+Roxbury,Erie/Wolcott Streets Park,BNAN,3,0.25,Park_Play_Fields
+Roxbury,Meany Park,Commonwealth of Massachusetts,3,0.22341152,Park_Play_Fields
+Roxbury,Magazine Street Garden,City of Boston,5,0.1922413,Community_Gardens
+Roxbury,Clifford Playground,City of Boston,3,7.65642255,Park_Play_Fields
+Roxbury,Laviscount Park,City of Boston,3,0.64,Park_Play_Fields
+Roxbury,Columbia Road Totlot,City of Boston,3,0.22,Park_Play_Fields
+Roxbury,Roxbury Heritage State Park I,Commonwealth of Massachusetts,3,2.81,Park_Play_Fields
+Roxbury,Eliot Burying Ground,City of Boston,4,0.80077488,Burial_Grounds
+Roxbury,Mt. Pleasant Play Area,City of Boston,3,0.31333134,Park_Play_Fields
+Roxbury,Richardson Park,Commonwealth of Massachusetts,1,1.12087438,Malls_Sqs_Plaza
+Roxbury,Columbia Road,City of Boston,2,0.58,Parks_Reserv_Beaches
+Roxbury,Beauford Play Area,City of Boston,3,0.23995873,Park_Play_Fields
+Roxbury,King School Park,BRA,3,0.82,Park_Play_Fields
+Roxbury,Children's Park,City of Boston,3,0.19,Park_Play_Fields
+Roxbury,Winthrop Playground,City of Boston,3,1.5608951,Park_Play_Fields
+Roxbury,The Food Project Lot #2,City of Boston,5,1.38,Community_Gardens
+Roxbury,Leyland Street Garden,BNAN,5,0.39327913,Community_Gardens
+Roxbury,Magnolia & Woodford Streets Garden,City of Boston,5,0.14701905,Community_Gardens
+Roxbury,Denton Square,City of Boston,1,0.07843967,Malls_Sqs_Plaza
+Roxbury,Dacia/Woodcliff Community Garden,BNAN,5,0.29448898,Community_Gardens
+Roxbury,"Julian, Judson, Dean Garden",BNAN,5,0.1909683,Community_Gardens
+Roxbury,Esparanza Garden,Private,5,0.11222645,Community_Gardens
+Roxbury,Sargent Street Park,Community Group/Nonprofit,5,0.31034281,Community_Gardens
+Roxbury,Fredericks Middle School Playground,City of Boston,3,5.13,Park_Play_Fields
+Roxbury,Woodcliff,City of Boston,7,1.3,Natural_Areas
+Roxbury,Ceylon Park I,City of Boston,3,4.17142627,Park_Play_Fields
+Roxbury,Ceylon Park II,BRA,3,0.49,Park_Play_Fields
+Roxbury,Dickerman School Yard,City of Boston,3,0.55,Park_Play_Fields
+Roxbury,Hannon Playground,City of Boston,3,1.97257523,Park_Play_Fields
+Roxbury,Melnea Cass Boulevard I,Commonwealth of Massachusetts,2,3.04353461,Parks_Reserv_Beaches
+Roxbury,Franklin Hill Green,BHA,3,0.51,Park_Play_Fields
+Roxbury,New Academy Estates Courtyard,Private,3,0,Park_Play_Fields
+Roxbury,New Academy Estates Half Court,Private,3,0,Park_Play_Fields
+Roxbury,Salvation Army Field,Private,3,1.48,Park_Play_Fields
+Roxbury,YMCA Athletic Field,Private,3,2.34,Park_Play_Fields
+Roxbury,Higginson Schoolyard,City of Boston,3,0.34619095,Park_Play_Fields
+Roxbury,Southwest Corridor Park,MBTA,2,47.68,Parks_Reserv_Beaches
+Roxbury,Harambee Park,City of Boston,3,45.55780088,Park_Play_Fields
+Roxbury,St Mary's Cemetery,Private,4,10.62163805,Burial_Grounds
+Roxbury,Tommy's Rock (Alpine),City of Boston,6,0.23,Natural_Areas
+Roxbury,Blue Hill Club Recreation Center,City of Boston,3,3.04,Park_Play_Fields
+Roxbury,Washburn Street Green II,City of Boston,1,0.01,Malls_Sqs_Plaza
+Roxbury,Columbia Road Mall,City of Boston,1,0,Malls_Sqs_Plaza
+West End,Phillips Street Play Area,City of Boston,3,0.11526636,Park_Play_Fields
+West End,State House Park,Commonwealth of Massachusetts,1,1.23870543,Malls_Sqs_Plaza
+West End,Temple Street Park,City of Boston,1,0.05911479,Malls_Sqs_Plaza
+West End,West End Recreation Complex,Private,3,3.42,Park_Play_Fields
+West End,Thoreau Path,Private,1,3.86,Malls_Sqs_Plaza
+West End,Old West Church Yard,Private,3,0.19,Park_Play_Fields
+South End,Hawes Burying Ground,City of Boston,4,0.25082368,Burial_Grounds
+South End,Union Burying Ground,City of Boston,4,0.12115745,Burial_Grounds
+South End,Dorchester Heights NHS,United States of America,1,4.40398348,Malls_Sqs_Plaza
+South End,Sweeney Playground,City of Boston,3,0.47965763,Park_Play_Fields
+South End,Lincoln Square,City of Boston,1,0.22,Malls_Sqs_Plaza
+South End,St. Augustine Burying Ground,Private,4,0.91,Burial_Grounds
+South End,"St. Augustine""s Park",Private,1,0.11,Malls_Sqs_Plaza
+South End,Orton Field,City of Boston,3,1.59,Park_Play_Fields
+South End,Columbia Road/Day Boulevard,Commonwealth of Massachusetts,2,16.85,Parks_Reserv_Beaches
+South End,Columbia Park,City of Boston,3,0.34,Park_Play_Fields
+South Boston,Hawes Burying Ground,City of Boston,4,0.25082368,Burial_Grounds
+South Boston,Union Burying Ground,City of Boston,4,0.12115745,Burial_Grounds
+South Boston,Dorchester Heights NHS,United States of America,1,4.40398348,Malls_Sqs_Plaza
+South Boston,Sweeney Playground,City of Boston,3,0.47965763,Park_Play_Fields
+South Boston,Lincoln Square,City of Boston,1,0.22,Malls_Sqs_Plaza
+South Boston,St. Augustine Burying Ground,Private,4,0.91,Burial_Grounds
+South Boston,"St. Augustine""s Park",Private,1,0.11,Malls_Sqs_Plaza
+South Boston,Orton Field,City of Boston,3,1.59,Park_Play_Fields
+South Boston,Columbia Road/Day Boulevard,Commonwealth of Massachusetts,2,16.85,Parks_Reserv_Beaches
+South Boston,Columbia Park,City of Boston,3,0.34,Park_Play_Fields
+South Boston Waterfront,Medal of Honor Park,City of Boston,1,6.18269328,Malls_Sqs_Plaza
+South Boston Waterfront,Christopher Lee Playground,City of Boston,3,5.43798868,Park_Play_Fields
+South Boston Waterfront,Buckley Playground,City of Boston,3,0.65561916,Park_Play_Fields
+South Boston Waterfront,Fan Pier Plaza,United States of America,1,2.36,Malls_Sqs_Plaza
+South Boston Waterfront,Children's Wharf Harborwalk,Private,1,0.23,Malls_Sqs_Plaza
+South Boston Waterfront,Martin's Park,City of Boston,3,0.85,Park_Play_Fields
+South Boston Waterfront,Strandway/Castle Island,Commonwealth of Massachusetts,2,47.69946623,Parks_Reserv_Beaches
+South Boston Waterfront,Children's Museum Plaza,Private,1,0.44,Malls_Sqs_Plaza
+South Boston Waterfront,Boston Design Center Plaza,BRA,1,0.61467077,Malls_Sqs_Plaza
+South Boston Waterfront,Dry Dock Plaza,BRA,1,0.24,Malls_Sqs_Plaza
+South Boston Waterfront,Marine Industrial Park Entrance I,BRA,1,1.24,Malls_Sqs_Plaza
+South Boston Waterfront,Marine Industrial Park Entrance II,Massport,1,0.01,Malls_Sqs_Plaza
+South Boston Waterfront,Eastport Park,Massport,3,1.15,Park_Play_Fields
+South Boston Waterfront,South Boston Maritime Park,Massport,3,0.88,Park_Play_Fields
+South Boston Waterfront,Pier Four Harborwalk,Private,1,0.09,Malls_Sqs_Plaza
+South Boston Waterfront,Reserved Channel Harborwalk,Private,1,3.19,Malls_Sqs_Plaza
+South Boston Waterfront,Pier 10 Mall,BRA,1,0.56,Malls_Sqs_Plaza
+South Boston Waterfront,Tunnel Harborwalk,MassDOT,1,0.18,Malls_Sqs_Plaza
+South Boston Waterfront,Podium Plaza,Massport,1,0.46,Malls_Sqs_Plaza
+South Boston Waterfront,Williams Tunnel Portal Park,MassDOT,1,0.2,Malls_Sqs_Plaza
+South Boston Waterfront,Foster's Nook CG I,City of Boston,5,0.07,Community_Gardens
+South Boston Waterfront,Foster's Nook CG II,Community Group/Nonprofit,5,0.04,Community_Gardens
+South Boston Waterfront,ICA Pier Walk,Private,1,0.29,Malls_Sqs_Plaza
+South Boston Waterfront,Fan Pier Harborwalk,Private,1,1.66,Malls_Sqs_Plaza
+South Boston Waterfront,The Park at Fan Pier,Private,3,1.26,Park_Play_Fields
+South Boston Waterfront,Q Park,Private,3,0.6,Park_Play_Fields
