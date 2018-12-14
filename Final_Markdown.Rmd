@@ -2,7 +2,7 @@
 title: "Final_Project"
 author: "Hannah Stroud"
 date: "November 25, 2018"
-output: html_document
+output: word_document
 ---
 
 ```{r setup, include=FALSE}
@@ -11,7 +11,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ## Reading in and playing with the data
 
-```{r,chunk- Libraries, echo=TRUE, cache=TRUE, warning=FALSE, message=FALSE}
+```{r Libraries, warning=FALSE, message=FALSE}
 library(readr)
 library(tidyverse)
 library(dplyr)
@@ -20,36 +20,39 @@ library(tidyr)
 library(broom)
 library(gridExtra)
 library(kableExtra)
+library(patchwork)
+theme_set(theme_bw())
 ```
 
 ##Project 
 1. Where are Boston's vulnerable populations? Does examing different levels of scale change where the most vulnerable spots are?
 2. What characteristics contribute most to those vulnerable areas?
 3. Are those socially vulnerable populations more physically exposed to climate change hazards than others?
-4. Are those socially vulnerable populations being targeted by the city equitably in terms of adaptation planning?
 
-###Climate Ready Boston Social Vulnerability Data
+###Data 
 ```{r Importing Data, echo=TRUE, warning=FALSE}
 SoVI_neighborhood <- read.csv("./Data/CRB_Vul_Sum.csv")
 CRB_Attributes <- read.csv("./Data/Climate_Ready_Boston_Social_Vulnerability.csv")
     
 #Reading in CDC composite score, uses more factors than Climate Ready Boston 
 Index <- read.csv("./Data/SoVI2010_MA.csv")
+combined <- left_join(CRB_Attributes, Index, by="GEOID10")
+N_SVI <- combined %>% group_by(Neighborhood) %>% summarise(SVI= mean(SOVI0610MA))
+write.csv(N_SVI, file="SVI.csv")
 ```
 
 ####Summary Statistics 
-```{r Calculating Percentages, echo=TRUE, warning=FALSE}
-#Adding percentages to total counts 
-SoVI_neighborhood <- SoVI_neighborhood[-c(9),] %>%   #getting rid of Harbor Island- no one lives ther
-                            mutate(Ppl_per_house=  POP100_RE/HU100_RE, 
-                                   Per_POC= POC2/POP100_RE,
+```{r Calculating Percentages, message=FALSE, warning= FALSE}
+SoVI_neighborhood <- SoVI_neighborhood[-c(9),] #getting rid of Harbor Island- no one lives there 
+SoVI_neighborhood <- full_join(SoVI_neighborhood, N_SVI, by="Neighborhood")
+SoVI_neighborhood <- SoVI_neighborhood %>%   
+                            mutate(Per_POC= POC2/POP100_RE,
                                    Per_Med= MedIllnes/POP100_RE,
                                    Per_child= TotChild/POP100_RE,
                                    Per_eld= OlderAdult/POP100_RE,
                                    Per_LI= Low_to_No/POP100_RE,
                                    Per_Lmt_Eng= LEP/POP100_RE,
-                                   Per_Dis= TotDis/POP100_RE,
-                                   Per_OS = Open.Space.Area.in.acres/AREA_ACRES)
+                                   Per_Dis= TotDis/POP100_RE)
 #some have over 100% open space- has to do with how I got GIS data and open space that overlapped neighborhoods was counted for both 
          
 CRB_Attributes <- CRB_Attributes[-c(151),] %>%   #rid Harbod Islands again
@@ -87,19 +90,12 @@ Boston_Summary <- CRB_Attributes %>%
                                                       Avg_Child= mean(Per_child),
                               Avg_eld= mean(Per_eld), Avg_LowInc= mean(Per_LI),
                               Avg_LEng= mean(Per_Lmt_Eng), Avg_POC= mean(Per_POC), 
-                              Avg_OpenSpc= mean(Open.Space.Count),
-                              Avg_OPratio= mean(Per_OS),
-                            
                               SD_Med= sd(Per_Med),SD_Dis= sd(Per_Dis), SD_ch= sd(Per_child), 
                               SD_ed= sd(Per_eld),SD_LI= sd(Per_LI),
-                              SD_LEP= sd(Per_Lmt_Eng), SD_POC= sd(Per_POC),
-                              SD_OP= sd(Open.Space.Count),SD_OPratio= sd(Per_OS)) %>% 
+                              SD_LEP= sd(Per_Lmt_Eng), SD_POC= sd(Per_POC)) %>% 
                                 mutate(area= "Boston")
 #Rearrange  
-rearrange <- gather(Boston_Neigh_Sum, key= "Value", 1:18)
-Avg <- rearrange[c(1:9),c(1:2)] %>% rename(Mean= "1:18", Stat= Value)
-StdDev <- rearrange[c(10:18),c(1:2)]%>% rename(SD="1:18", Stat= Value)
-B_Sum <- cbind(Avg, StdDev) 
+write.csv(Boston_Neigh_Sum, file= "BostonSum.csv")
 
 B_Sum %>% kable() %>% kable_styling(bootstrap_options = "striped", full_width = F, position = "left") %>% column_spec(1, bold = T, border_right = T) %>% column_spec(3, bold=T)
 ```
@@ -115,11 +111,12 @@ SoVI_neighborhood <- SoVI_neighborhood %>% mutate(
                                             ZLowI= as.numeric(scale(Per_LI)),
                                             ZLEP= as.numeric(scale(Per_Lmt_Eng)),
                                             ZDis= as.numeric(scale(Per_Dis)), 
-                                            ZPOC= as.numeric(scale(Per_POC)),
-                                            ZOpenSp= as.numeric(scale(Per_OS)),
-                                            ZOP_number= as.numeric(scale(Open.Space.Count)))
+                                            ZPOC= as.numeric(scale(Per_POC)))
+                                            
 
-SoVI_neighborhood <- SoVI_neighborhood %>% mutate(composite=(ZMed +ZChild+ZEld+ ZLowI +ZLEP+ZDis+ ZPOC))
+SoVI_neighborhood <- SoVI_neighborhood %>% 
+  mutate(composite=(ZMed +ZChild+ZEld+ ZLowI +ZLEP+ZDis+ ZPOC)) %>%
+  mutate(Zcom= as.numeric(scale(composite)))
 
 write.csv(SoVI_neighborhood, file= "SoVI_Neighborhood_z")
 ggplot(data= SoVI_neighborhood, aes(x= Neighborhood, y=composite, color= composite)) +
@@ -128,14 +125,14 @@ ggplot(data= SoVI_neighborhood, aes(x= Neighborhood, y=composite, color= composi
 
 ```{r Boston versus Neighborhood}
 Boston_Neigh_Sum %>% select(area, Avg_POC, Avg_Med, Avg_Child, 
-                            Avg_eld, Avg_LowInc, Avg_LEng, Avg_Dis, Avg_OpenSpc) %>% 
+                            Avg_eld, Avg_LowInc, Avg_LEng, Avg_Dis) %>% 
   kable() %>% 
   kable_styling(bootstrap_options = "striped", full_width = F)
 write.csv(Boston_Neigh_Sum %>% select(area, Avg_POC, Avg_Med, Avg_Child, 
-                            Avg_eld, Avg_LowInc, Avg_LEng, Avg_Dis, Avg_OpenSpc), file="BostonData.csv")
+                            Avg_eld, Avg_LowInc, Avg_LEng, Avg_Dis), file="BostonData.csv")
 
 SoVI_neighborhood %>% 
-  select(Neighborhood, Per_POC, Per_Med, Per_child, Per_eld, Per_LI, Per_Lmt_Eng, Per_Dis, Per_OS) %>%
+  select(Neighborhood, Per_POC, Per_Med, Per_child, Per_eld, Per_LI, Per_Lmt_Eng, Per_Dis) %>%
   kable() %>%
   kable_styling(bootstrap_options = "striped", full_width = F)
 ```
@@ -149,35 +146,13 @@ Top_NPOC <- filter(SoVI_neighborhood, ZPOC >= 1.5)
 Top_NLEP <- filter(SoVI_neighborhood, ZLEP >= 1.5)
 Top_NLI <- filter(SoVI_neighborhood, ZLowI >= 1.5)
 Top_NEld <- filter(SoVI_neighborhood, ZEld >= 1.5)
-LeastOP<- filter(SoVI_neighborhood, ZOP_number<= -1)
 
-rbind(Top_NMed, Top_NChild, Top_NDis, Top_NPOC, Top_NLEP, Top_NLI, Top_NEld, LeastOP) %>%
+rbind(Top_NMed, Top_NChild, Top_NDis, Top_NPOC, Top_NLEP, Top_NLI, Top_NEld) %>%
   write.csv(file="topZneighborhood.csv")
 
 ```
 
-```{r Visualize Z score Distribution by Neighborhood}
-#Visualize 
-Med<- ggplot(data= SoVI_neighborhood, aes(x= Neighborhood, y=ZMed, color =Per_Med)) + geom_point()+scale_color_gradient(low = "blue", high = "red") + geom_hline(yintercept = 0, color="purple")+ theme(legend.title=element_blank())
 
-Child <- ggplot(data= SoVI_neighborhood, aes(x= Neighborhood, y=ZChild, color =Per_child)) + geom_point()+scale_color_gradient(low = "blue", high = "red") + geom_hline(yintercept = 0, color="purple") + theme(legend.title=element_blank())
-
-Eld <- ggplot(data= SoVI_neighborhood, aes(x= Neighborhood, y=ZEld, color =Per_eld)) + geom_point()+scale_color_gradient(low = "blue", high = "red") + geom_hline(yintercept = 0, color="purple") +  theme(legend.title=element_blank())
-
-LowI<- ggplot(data= SoVI_neighborhood, aes(x= Neighborhood, y=ZLowI, color =Per_LI)) + geom_point()+scale_color_gradient(low = "blue", high = "red") + geom_hline(yintercept = 0, color="purple") +  theme(legend.title=element_blank())
-
-LEP <- ggplot(data= SoVI_neighborhood, aes(x= Neighborhood, y=ZLEP,ymin=-2, ymax=2, color =Per_Lmt_Eng)) + geom_point()+scale_color_gradient(low = "blue", high = "red") + geom_hline(yintercept = 0, color="purple") +  theme(legend.title=element_blank())
-
-Dis <- ggplot(data= SoVI_neighborhood, aes(x= Neighborhood, y=ZDis,ymin=-2, ymax=2, color =Per_Dis)) + geom_point()+scale_color_gradient(low = "blue", high = "red") + geom_hline(yintercept = 0, color="purple") +  theme(legend.title=element_blank())
-
-POC <- ggplot(data= SoVI_neighborhood, aes(x= Neighborhood, y=ZPOC,ymin=-2, ymax=2, color =Per_POC)) + geom_point()+scale_color_gradient(low = "blue", high = "red") + geom_hline(yintercept = 0, color="purple") +  theme(legend.title=element_blank())
-
-POSp <- ggplot(data= SoVI_neighborhood, aes(x= Neighborhood, y=ZOpenSp,ymin=-2, ymax=2, color =Per_OS)) + geom_point()+scale_color_gradient(low = "red", high = "green") + geom_hline(yintercept = 0, color="purple") +  theme(legend.title=element_blank())
-
-POScnt <- ggplot(data= SoVI_neighborhood, aes(x= Neighborhood, y=ZOP_number, ymin=-2, ymax=2, color =Open.Space.Count)) + geom_point()+scale_color_gradient(low = "red", high = "green") + geom_hline(yintercept = 0, color="purple") +  theme(legend.title=element_blank())
-
-grid.arrange(Med, Child, Eld, LowI, LEP, Dis, POC, POSp, POScnt, ncol= 3)
-```
 
 ```{r Z score at Census tract, warning=FALSE}
 #Census Tract Leve
@@ -189,6 +164,21 @@ CRB_Attributes <- CRB_Attributes %>% mutate(ZMed=as.numeric(scale(Per_Med)),
                                             ZDis= as.numeric(scale(Per_Dis)), 
                                             ZPOC= as.numeric(scale(Per_POC))) %>%
                                     mutate(composite= ZMed+ ZChild + ZEld+ ZLowI+ ZLEP+ ZDis+ZPOC)
+
+#View Distribution 
+
+med <- ggplot(CRB_Attributes, aes(x= Per_Med)) + geom_histogram(fill="red")
+child <- ggplot(CRB_Attributes, aes(x= Per_child)) + geom_histogram(fill="orange")
+eld <- ggplot(CRB_Attributes, aes(x= Per_eld)) + geom_histogram(fill="yellow")
+lin <- ggplot(CRB_Attributes, aes(x= Per_LI)) + geom_histogram(fill="green")
+lep <- ggplot(CRB_Attributes, aes(x= Per_Lmt_Eng)) + geom_histogram(fill="dark green")
+dis <- ggplot(CRB_Attributes, aes(x= Per_Dis)) + geom_histogram(fill="blue")
+poc <- ggplot(CRB_Attributes, aes(x= Per_POC)) + geom_histogram(fill="purple")
+
+med + child + eld + lin + lep + dis + poc + plot_layout(ncol= 2)
+```
+
+```{r Top Z scores}
 combined <- left_join(CRB_Attributes, Index, by="GEOID10")
 ggplot(data= combined, aes(x=composite, fill= Neighborhood)) +
   geom_histogram()
@@ -238,8 +228,8 @@ rbind(ct_p, ct_c, ct_d, ct_LI, ct_LEP, ct_m, ct_eld) %>%
 Med_plot <- ggplot(combined, aes(x= Per_Med, y=SOVI0610MA, color= Neighborhood)) +geom_point()+
   ggtitle("R= -0.273")+theme(legend.position="none")
 
-Eld_plot <- ggplot(combined, aes(x= Per_Med, y=SOVI0610MA, color= Neighborhood)) +geom_point()+
-  ggtitle("R= 0.108")+theme(legend.position="none")
+Eld_plot <- ggplot(combined, aes(x= Per_eld, y=SOVI0610MA, color= Neighborhood)) +geom_point()+
+  ggtitle("No correlation")+theme(legend.position="none")
 
 POC_plot <- ggplot(combined, aes(x= Per_POC, y=SOVI0610MA, color= Neighborhood))+ 
   geom_point() +
@@ -259,15 +249,15 @@ LEP_plot <- ggplot(combined, aes(x= Per_Lmt_Eng, y=SOVI0610MA,
   geom_point() +
   ggtitle("R= 0.532")+theme(legend.position="none")
 
-LowInc_plot <- ggplot(combined, aes(x= Per_Lmt_Eng, y=SOVI0610MA, 
+LowInc_plot <- ggplot(combined, aes(x= Per_LI, y=SOVI0610MA, 
                                    color= Neighborhood))+ 
   geom_point() +
-  ggtitle("R= 0.517") +theme(legend.position= "none") 
+  ggtitle("R= 0.517") +theme(legend.position= "left") 
 
-grid.arrange(Eld_plot, LEP_plot, Child_plot, Dis_plot,POC_plot,Med_plot,LowInc_plot, ncol= 3)
+Eld_plot + LEP_plot + Child_plot+ Dis_plot+POC_plot+ Med_plot+ LowInc_plot+ plot_layout(ncol = 3)
 ```
 
-```{r Relationships with Open Space, warning= FALSE}
+```{r Relationships with Open Space, message=FALSE, warning= FALSE}
 Open_Space <- read.csv("./Data/Open_Space_v3.csv")
 OP_Rec <- Open_Space %>% filter(TypeLong== "Park_Play_Fields") %>% 
         group_by(CRB_Neighborhood) %>% 
@@ -291,33 +281,105 @@ All<- AllOpenSpace %>% full_join(OP_PrtAreas, by= "CRB_Neighborhood") %>% full_j
 
 SoVI_neighborhood <- SoVI_neighborhood %>% rename(CRB_Neighborhood= Neighborhood_full)
 J <- full_join(SoVI_neighborhood, All, by= "CRB_Neighborhood")
+J <-replace(J, is.na(J), 0)
 
-J <- J %>%
-  mutate_if(is.numeric, funs(replace(., is.na(.), 0))) %>% 
+J <- J[-c(22:25),] %>%
   mutate(Tot_GreenSpace= RecArea + Green_area + PtA_area + Gard_area) %>%
   mutate(ratio_green= Tot_GreenSpace/AREA_ACRES)
 J %>% filter(ratio_green>= 1) 
   #Longwood Open Space file from GIS and neighborhood outline shows Longwood as all open space
-J <- J[-c(12),]  #removing longwood 
+J <- J[-c(12),]  %>% #removing longwood 
+      mutate(rec_r= RecArea/AREA_ACRES,
+             gr_r= Green_area/AREA_ACRES, 
+             Pta_r= PtA_area/AREA_ACRES,
+             gard_r= Gard_area/AREA_ACRES) %>% 
+        mutate(Zrec=as.numeric(scale(rec_r)) ,
+               Zgreen=as.numeric(scale(gr_r)) ,
+                 ZPta= as.numeric(scale(Pta_r))  ,
+                 Zgard= as.numeric(scale(gard_r))  ,
+                 Ztotal=as.numeric(scale(ratio_green)))
+write.csv(J, file="openspace_joined_census.csv" )
+J %>% select(CRB_Neighborhood, Neighborhood, Zrec, Zgreen, Zgard, ZPta, Ztotal,
+             ZDis, ZChild, ZEld, ZMed, ZPOC, ZLowI, ZLEP, composite) %>% write.csv(file= "ZTable.csv")
 
+J %>% select(CRB_Neighborhood, Neighborhood, Zrec, Zgreen, Zgard, ZPta, Ztotal,
+             ZDis, ZChild, ZEld, ZMed, ZPOC, ZLowI, ZLEP) %>% 
+              kable() %>%  
+                 kable_styling(bootstrap_options = "striped")
 ```
 
+```{r Visualize Z score Distribution by Neighborhood}
+#Visualize 
+Med<- ggplot(data= SoVI_neighborhood, aes(x= Neighborhood, y=ZMed, color =Per_Med)) + geom_point()+scale_color_gradient(low = "blue", high = "red") + geom_hline(yintercept = 0, color="purple")+ theme(legend.title=element_blank())
+
+Child <- ggplot(data= SoVI_neighborhood, aes(x= Neighborhood, y=ZChild, color =Per_child)) + geom_point()+scale_color_gradient(low = "blue", high = "red") + geom_hline(yintercept = 0, color="purple") + theme(legend.title=element_blank())
+
+Eld <- ggplot(data= SoVI_neighborhood, aes(x= Neighborhood, y=ZEld, color =Per_eld)) + geom_point()+scale_color_gradient(low = "blue", high = "red") + geom_hline(yintercept = 0, color="purple") +  theme(legend.title=element_blank())
+
+LowI<- ggplot(data= SoVI_neighborhood, aes(x= Neighborhood, y=ZLowI, color =Per_LI)) + geom_point()+scale_color_gradient(low = "blue", high = "red") + geom_hline(yintercept = 0, color="purple") +  theme(legend.title=element_blank())
+
+LEP <- ggplot(data= SoVI_neighborhood, aes(x= Neighborhood, y=ZLEP,ymin=-2, ymax=2, color =Per_Lmt_Eng)) + geom_point()+scale_color_gradient(low = "blue", high = "red") + geom_hline(yintercept = 0, color="purple") +  theme(legend.title=element_blank())
+
+Dis <- ggplot(data= SoVI_neighborhood, aes(x= Neighborhood, y=ZDis,ymin=-2, ymax=2, color =Per_Dis)) + geom_point()+scale_color_gradient(low = "blue", high = "red") + geom_hline(yintercept = 0, color="purple") +  theme(legend.title=element_blank())
+
+POC <- ggplot(data= SoVI_neighborhood, aes(x= Neighborhood, y=ZPOC,ymin=-2, ymax=2, color =Per_POC)) + geom_point()+scale_color_gradient(low = "blue", high = "red") + geom_hline(yintercept = 0, color="purple") +  theme(legend.title=element_blank())
+
+Green_space <- ggplot(data= J, aes(x=Neighborhood, y=Ztotal,ymin=-2, ymax=2, color = ratio_green)) + geom_point()+scale_color_gradient(low = "blue", high = "red") + geom_hline(yintercept = 0, color="purple") +  theme(legend.title=element_blank())
+
+Med + Child + Eld + LowI + LEP + Dis + POC + Green_space + plot_layout(ncol= 2)
+```
 
 
 ```{r Social Vulnerability and Climate Readiness, warning=FALSE}
 
-SoVI_neighborhood <- SoVI_neighborhood %>% 
+SoVI_neighborhood <- SoVI_neighborhood[-c(22:25),] %>% 
   mutate(Storm.Water.Priorities = fct_relevel(Storm.Water.Priorities, "Low", "Medium", "High"),
          Temperature.Hot.Spots=  fct_relevel(Temperature.Hot.Spots, "Low", "Medium", "High"))
 
+storm <- ggplot(SoVI_neighborhood, aes( x= Storm.Water.Priorities, y=composite, color=Storm.Water.Priorities)) + 
+  geom_boxplot() + theme(legend.position="none")
 
-ggplot(SoVI_neighborhood, aes( x= Storm.Water.Priorities, y=composite)) + 
-  geom_boxplot()
+em_serv <- ggplot(SoVI_neighborhood, aes( x= Emergency.Services.Hotspots, y=composite)) + 
+  geom_point(color= "orange") 
 
-ggplot(SoVI_neighborhood, aes( y= Emergency.Services.Hotspots, x=composite)) + 
-  geom_point() 
+temp <- ggplot(SoVI_neighborhood, aes( x= Temperature.Hot.Spots, y=composite, 
+                                       color=Temperature.Hot.Spots)) + 
+  geom_boxplot() + theme(legend.position="none")
+gr_com <- ggplot(J, aes(x= ratio_green, y= composite)) + 
+  geom_point(color= "green")
 
-ggplot(SoVI_neighborhood, aes( x= Temperature.Hot.Spots, y=composite)) + 
-  geom_boxplot() 
+storm  + temp + em_serv + gr_com + plot_layout(ncol=2)
+```
 
+```{r }
+#Compare against combined characteristics and NOAA SVI correlations (total green spaces)
+gr_sv <- ggplot(J, aes(x= SVI, y= ratio_green)) + geom_point(color= "purple")
+gr_com <- ggplot(J, aes(x= composite, y= ratio_green)) + geom_point(color= "blue") 
+
+
+#Vizualizing data 
+rec_c <- ggplot(J, aes(x= composite, y=rec_r)) + geom_point( color= "orange")
+rec_sv <- ggplot(J, aes(x= SVI, y=rec_r)) + geom_point( color= "red")
+prt_c <- ggplot(J, aes(x= composite, y=Pta_r)) + geom_point(color= "pink")
+prt_sv <- ggplot(J, aes(x= SVI, y=Pta_r)) + geom_point(color= "yellow")
+green_c <- ggplot(J, aes(x= composite, y=gr_r)) + geom_point(color= "dark green") #greenways and parkways
+green_sv <- ggplot(J, aes(x= SVI, y=gr_r)) + geom_point(color= "green")
+gard_c <- ggplot(J, aes(x= composite, y= gard_r)) + geom_point(color= "dark blue")
+gard_c <- ggplot(J, aes(x= SVI, y= gard_r)) + geom_point(color= "light blue")
+
+gr_sv + gr_com + rec_c +prt_c + green_c + gard_c + plot_layout(ncol=2)
+```
+
+```{r Correlation numbers}
+cor.test(J$SVI, J$Emergency.Services.Hotspots)
+cor.test(J$composite, J$Emergency.Services.Hotspots)
+
+cor.test(J$SVI, J$TempHotSpotsLevel)
+cor.test(J$composite, J$TempHotSpotsLevel)
+
+cor.test(J$gard_r, J$composite)
+cor.test(J$rec_r, J$composite)
+cor.test(J$Pta_r, J$composite)
+cor.test(J$gr_r, J$composite)
+cor.test(J$ratio_green, J$SVI)
 ```
