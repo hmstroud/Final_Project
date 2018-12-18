@@ -1,5 +1,5 @@
 ---
-title: "Final_Project"
+title: "Final_Project_Exploratory_SV_Analysis "
 author: "Hannah Stroud"
 date: "November 25, 2018"
 output: word_document
@@ -8,9 +8,23 @@ output: word_document
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
+#Introduction
+My thesis research revolves around climate justice and how to assess and evaluate the impacts of climate change adaptation on socially vulnerable populations. My field of research started when social justice advocates began noticing and proving statistically significant difference between the location of hazardous waste sites in communities of color compared to white communities (Mohai & Saha, 2006). Studies of spatial analysis supporting or refuting these claims of environmental justice differed by what unit of scale they analyzed, and what areas they included in their study (Mohai, Pellow & Roberts, 2009). Zimmerman also argues that scale plays an important role in determining injustice, as he argues that a number of scales should be explored simultaneously and a sensitivity analysis should be run to see if the scales are different in equity implications (1990). The filed has since expanded to look at various social and economic characteristics and their exposure to environmental hazards. Climate Justice looks specifically at how these vulnerable populations are affected by Climate Change and how adaptation can begin to right past inequities and injustices. Based off the work of these authors, and that fact I am still waiting to collect my own data, I conducted a social vulnerability analysis of the city of Boston at two scales and explored correlation between vulnerable populations and aspects of climate change. I conducted this analysis because I wanted to know:  
+* Where are Boston's vulnerable populations? Does examining different levels of scale change where the most vulnerable spots are?  
+* What characteristics contribute most to those vulnerable areas?  
+* Are those socially vulnerable populations more physically exposed to climate change hazards than others?  
+Social vulnerability is thought of as the product of social factors that influence the susceptibility of various groups to harm and affect their ability to harm as well as place-based inequalities like economic vitality (Cutter, Boruff & Shirley, 2003). Martin goes further and defines social vulnerability as the predisposition of social groups to suffer a disproportionately (death, injury, loss, disruption of livelihood) to hazards (2015). There are many ways, indexes and characteristics used to monitor social vulnerability. I choose seven based off their repeated mention in literature and accessibility of data from the census and Climate Ready Boston:  
+* People of Color (POC)
+*	Limited English Proficiency 
+*	Low to No Income 
+*	Medical Illness
+*	Disability 
+*	Children 
+*	Elderly  
+To look at exposure and adaptability to climate hazards, I looked at areas of emergency services, open green space, daytime temperature hot spots and storm water priorities of the city. Most of my data was obtained through Climate Ready Boston and the Trust for Public Land. I used NOAA’s Social Vulnerability Index and Boston GIS for open space data. 
 
-## Reading in and playing with the data
 
+## Setup 
 ```{r Libraries, warning=FALSE, message=FALSE}
 library(readr)
 library(tidyverse)
@@ -24,11 +38,6 @@ library(patchwork)
 theme_set(theme_bw())
 ```
 
-##Project 
-1. Where are Boston's vulnerable populations? Does examing different levels of scale change where the most vulnerable spots are?
-2. What characteristics contribute most to those vulnerable areas?
-3. Are those socially vulnerable populations more physically exposed to climate change hazards than others?
-
 ###Data 
 ```{r Importing Data, echo=TRUE, warning=FALSE}
 SoVI_neighborhood <- read.csv("./Data/CRB_Vul_Sum.csv")
@@ -41,7 +50,11 @@ N_SVI <- combined %>% group_by(Neighborhood) %>% summarise(SVI= mean(SOVI0610MA)
 write.csv(N_SVI, file="SVI.csv")
 ```
 
-####Summary Statistics 
+##Methods  
+I used ArcMap 10.4 and R 3.5.1 to conduct my analysis and visualize my data and results. My first step was to take the social vulnerability characteristics data and find percentages since census tracts and neighborhoods were not equal. The data came to me a census tract level. There were various GIS shapefiles that had Boston neighborhoods, and all of them were different. I ended up using the neighborhood outlines from Climate Ready Boston as my boundaries for my neighborhood-scale analysis.  
+Once ratios of population characteristics were computed, I calculated a Z score. I did this at the census tract and neighborhood levels. I exported that Z score as an excel and then imported it to GIS, joined it to original shape file and made maps of the Z scores for each characteristic individually for both census and neighborhood levels and displayed. I categorized the colors as consistently as I could given the range of Z score for each characteristic. Because the neighborhood level of analysis was so much larger and I had fewer data points, there was never a Z score larger than 2. I also computed a composite score of all the Z scores, to identify the most vulnerable based on all characteristics.  
+
+###Summary Statistics 
 ```{r Calculating Percentages, message=FALSE, warning= FALSE}
 SoVI_neighborhood <- SoVI_neighborhood[-c(9),] #getting rid of Harbor Island- no one lives there 
 SoVI_neighborhood <- full_join(SoVI_neighborhood, N_SVI, by="Neighborhood")
@@ -84,25 +97,11 @@ Boston_Summary <- CRB_Attributes %>%
                                   Per_Eld= Tot_Eld/Tot_Pop,
                                   Per_LI= Tot_LowInc/Tot_Pop,
                                   Per_LEP= Tot_LEP/Tot_Pop)
-                                  
-
-  Boston_Neigh_Sum  <- SoVI_neighborhood %>%summarise(Avg_Med= mean(Per_Med), Avg_Dis= mean(Per_Dis),
-                                                      Avg_Child= mean(Per_child),
-                              Avg_eld= mean(Per_eld), Avg_LowInc= mean(Per_LI),
-                              Avg_LEng= mean(Per_Lmt_Eng), Avg_POC= mean(Per_POC), 
-                              SD_Med= sd(Per_Med),SD_Dis= sd(Per_Dis), SD_ch= sd(Per_child), 
-                              SD_ed= sd(Per_eld),SD_LI= sd(Per_LI),
-                              SD_LEP= sd(Per_Lmt_Eng), SD_POC= sd(Per_POC)) %>% 
-                                mutate(area= "Boston")
-#Rearrange  
-write.csv(Boston_Neigh_Sum, file= "BostonSum.csv")
-
-B_Sum %>% kable() %>% kable_styling(bootstrap_options = "striped", full_width = F, position = "left") %>% column_spec(1, bold = T, border_right = T) %>% column_spec(3, bold=T)
+                                
 ```
 
 
-###Where are the more vulnerable spots?
-
+##Find the statistically significant difference 
 ```{r Computing Neighborhood Scale Z Scores, echo=TRUE, warning=FALSE}
 SoVI_neighborhood <- SoVI_neighborhood %>% mutate(
                                             ZMed=as.numeric(scale(Per_Med)),
@@ -122,39 +121,35 @@ write.csv(SoVI_neighborhood, file= "SoVI_Neighborhood_z")
 ggplot(data= SoVI_neighborhood, aes(x= Neighborhood, y=composite, color= composite)) +
   geom_point() + scale_color_gradient(low = "blue", high = "red") 
 ```
+Negative scores denote neighborhoods under the average of vulnerable population characteristics. Positive denote those above average. 
 
-```{r Boston versus Neighborhood}
-Boston_Neigh_Sum %>% select(area, Avg_POC, Avg_Med, Avg_Child, 
-                            Avg_eld, Avg_LowInc, Avg_LEng, Avg_Dis) %>% 
-  kable() %>% 
-  kable_styling(bootstrap_options = "striped", full_width = F)
-write.csv(Boston_Neigh_Sum %>% select(area, Avg_POC, Avg_Med, Avg_Child, 
-                            Avg_eld, Avg_LowInc, Avg_LEng, Avg_Dis), file="BostonData.csv")
-
+```{r}
 SoVI_neighborhood %>% 
   select(Neighborhood, Per_POC, Per_Med, Per_child, Per_eld, Per_LI, Per_Lmt_Eng, Per_Dis) %>%
   kable() %>%
   kable_styling(bootstrap_options = "striped", full_width = F)
 ```
 
-```{r Top Z scores}
+```{r Significant Neighborhood }
 #Top Z scores 
 Top_NMed <- filter(SoVI_neighborhood, ZMed >= 1.5)
-Top_NChild <- filter(SoVI_neighborhood, ZChild >= 1.5)
 Top_NDis <- filter(SoVI_neighborhood, ZDis >= 1.5)
-Top_NPOC <- filter(SoVI_neighborhood, ZPOC >= 1.5)
 Top_NLEP <- filter(SoVI_neighborhood, ZLEP >= 1.5)
 Top_NLI <- filter(SoVI_neighborhood, ZLowI >= 1.5)
 Top_NEld <- filter(SoVI_neighborhood, ZEld >= 1.5)
 
-rbind(Top_NMed, Top_NChild, Top_NDis, Top_NPOC, Top_NLEP, Top_NLI, Top_NEld) %>%
-  write.csv(file="topZneighborhood.csv")
+Top_NChild <- filter(SoVI_neighborhood, ZChild >= 1.5)
+Top_NPOC <- filter(SoVI_neighborhood, ZPOC >= 1.5)
 
+Neigh_ZTable <- rbind(Top_NMed, Top_NChild, Top_NDis, Top_NPOC, Top_NLEP, Top_NLI, Top_NEld) %>%
+  select(Neighborhood_full,ZMed, ZChild, ZDis, ZPOC, ZLEP, ZLowI, ZEld, composite) %>%
+    arrange(Neighborhood_full) %>%
+  kable() %>%
+  kable_styling(bootstrap_options = "striped", full_width = F)
 ```
+Because there is a smaller range in neighborhood values, instead of going with a p-value of 0.05, I increased mine to 0.075. The p-value for Z=1.5 was found by pnorm(1.5, lower.tail=FALSE). This only applies to the characteristics that have a normal distribution: LEP, LowI, Med, Dis and eld. Their distributions are shown below.  
 
-
-
-```{r Z score at Census tract, warning=FALSE}
+```{r Z score at Census tract, warning=FALSE, message= FALSE}
 #Census Tract Leve
 CRB_Attributes <- CRB_Attributes %>% mutate(ZMed=as.numeric(scale(Per_Med)),
                                             ZChild= as.numeric(scale(Per_child)),
@@ -166,7 +161,6 @@ CRB_Attributes <- CRB_Attributes %>% mutate(ZMed=as.numeric(scale(Per_Med)),
                                     mutate(composite= ZMed+ ZChild + ZEld+ ZLowI+ ZLEP+ ZDis+ZPOC)
 
 #View Distribution 
-
 med <- ggplot(CRB_Attributes, aes(x= Per_Med)) + geom_histogram(fill="red")
 child <- ggplot(CRB_Attributes, aes(x= Per_child)) + geom_histogram(fill="orange")
 eld <- ggplot(CRB_Attributes, aes(x= Per_eld)) + geom_histogram(fill="yellow")
@@ -178,25 +172,34 @@ poc <- ggplot(CRB_Attributes, aes(x= Per_POC)) + geom_histogram(fill="purple")
 med + child + eld + lin + lep + dis + poc + plot_layout(ncol= 2)
 ```
 
-```{r Top Z scores}
+```{r Census Significantly different}
 combined <- left_join(CRB_Attributes, Index, by="GEOID10")
 ggplot(data= combined, aes(x=composite, fill= Neighborhood)) +
   geom_histogram()
-                                                 
-   
 #export for GIS visualization 
 write.csv(CRB_Attributes,file= "CRB_stats.csv")
 
-Top_Med <- filter(CRB_Attributes, ZMed >= 2)
-Top_Child <- filter(CRB_Attributes, ZChild >= 2)
-Top_Dis <- filter(CRB_Attributes, ZDis >= 2)
-Top_POC <- filter(CRB_Attributes, ZPOC >= 1.5)
-Top_LEP <- filter(CRB_Attributes, ZLEP >= 2)
-Top_LI <- filter(CRB_Attributes, ZLowI >= 2)
-Top_Eld <- filter(CRB_Attributes, ZEld >= 2)
+#normal distribution 
+#p-value of Z 1.65 is 0.049. lower.tail=False 
+Top_Med <- filter(CRB_Attributes, ZMed >= 1.65)
+Top_Dis <- filter(CRB_Attributes, ZDis >= 1.65)
+Top_LEP <- filter(CRB_Attributes, ZLEP >= 1.65)
+Top_LI <- filter(CRB_Attributes, ZLowI >= 1.65)
+Top_Eld <- filter(CRB_Attributes, ZEld >= 1.65)
 
-rbind(Top_Med, Top_Child, Top_Dis, Top_POC, Top_LEP, Top_LI, Top_Eld) %>% write.csv(file="highZscores.csv")
+#non-normal distribution
+Top_POC <- filter(CRB_Attributes, ZPOC >= 1.65)
+Top_Child <- filter(CRB_Attributes, ZChild >= 1.65)
+
+Cen_ZTable <- rbind(Top_Med, Top_Child, Top_Dis, Top_POC, Top_LEP, Top_LI, Top_Eld) %>% 
+  select(Neighborhood_full,ZMed, ZDis, ZLEP, ZLowI, ZEld, ZPOC, ZChild) %>% 
+  arrange(Neighborhood_full) %>% 
+   kable() %>% 
+  kable_styling(bootstrap_options = "striped", full_width = F, position = "left")
 ```
+##Correlation  
+I obtained a Social Vulnerability Index (SVI) score from NOAA, at the census tract level. I then ran correlations between the SVI score and each of the seven characteristics to understand how much they were weighted in the SVI score. 6 of the 7 characteristics had significant correlations, though medical illness has a small negative correlation. The characteristics are important to the SVI but there are more factors they are factoring in.   
+The last step of my analysis was to look at the correlation between population characteristics and exposure to climate change threats. I was able to obtain some data from the Trust from Public Land to look at urban heat island areas of concern, emergency service clusters, and storm water priorities of the city. I ran a Pearson’s correlation coefficient against the composite scores and found none of the relationships to be statistically significant. Unfortunately I could only get this information at neighborhood scale for the time frame of this project.  
 
 ```{r Pearson Correlation}
 #Joining CRB data with CDC's 
@@ -219,8 +222,6 @@ ct_eld <- cor.test(combined$Per_eld, combined$SOVI0610MA) %>% tidy() %>% mutate(
 rbind(ct_p, ct_c, ct_d, ct_LI, ct_LEP, ct_m, ct_eld) %>%
   kable() %>% 
   kable_styling(bootstrap_options = "striped", full_width = F, position = "left") %>% column_spec(1, bold = T, border_right = T) %>%  column_spec(9, bold = T, border_right = T)
-  
-    #smallest correlation coefficient,  p>0.05
 ```
 
 ```{r Visualizing Correlations, warning=FALSE, message=FALSE}
@@ -299,13 +300,6 @@ J <- J[-c(12),]  %>% #removing longwood
                  Zgard= as.numeric(scale(gard_r))  ,
                  Ztotal=as.numeric(scale(ratio_green)))
 write.csv(J, file="openspace_joined_census.csv" )
-J %>% select(CRB_Neighborhood, Neighborhood, Zrec, Zgreen, Zgard, ZPta, Ztotal,
-             ZDis, ZChild, ZEld, ZMed, ZPOC, ZLowI, ZLEP, composite) %>% write.csv(file= "ZTable.csv")
-
-J %>% select(CRB_Neighborhood, Neighborhood, Zrec, Zgreen, Zgard, ZPta, Ztotal,
-             ZDis, ZChild, ZEld, ZMed, ZPOC, ZLowI, ZLEP) %>% 
-              kable() %>%  
-                 kable_styling(bootstrap_options = "striped")
 ```
 
 ```{r Visualize Z score Distribution by Neighborhood}
@@ -329,6 +323,8 @@ Green_space <- ggplot(data= J, aes(x=Neighborhood, y=Ztotal,ymin=-2, ymax=2, col
 Med + Child + Eld + LowI + LEP + Dis + POC + Green_space + plot_layout(ncol= 2)
 ```
 
+## Climate Change Impacts  
+Based on what data was available and easily put into R/GIS, I looked at storm water priorities of the city, temperature hot spots from heat island effect and clusters of emergency services.  
 
 ```{r Social Vulnerability and Climate Readiness, warning=FALSE}
 
@@ -351,7 +347,7 @@ gr_com <- ggplot(J, aes(x= ratio_green, y= composite)) +
 storm  + temp + em_serv + gr_com + plot_layout(ncol=2)
 ```
 
-```{r }
+```{r Visualize Green Space, warning=FALSE, message= FALSE}
 #Compare against combined characteristics and NOAA SVI correlations (total green spaces)
 gr_sv <- ggplot(J, aes(x= SVI, y= ratio_green)) + geom_point(color= "purple")
 gr_com <- ggplot(J, aes(x= composite, y= ratio_green)) + geom_point(color= "blue") 
@@ -370,7 +366,7 @@ gard_c <- ggplot(J, aes(x= SVI, y= gard_r)) + geom_point(color= "light blue")
 gr_sv + gr_com + rec_c +prt_c + green_c + gard_c + plot_layout(ncol=2)
 ```
 
-```{r Correlation numbers}
+```{r Correlation by the numbers, warning= FALSE, message= FALSE}
 cor.test(J$SVI, J$Emergency.Services.Hotspots)
 cor.test(J$composite, J$Emergency.Services.Hotspots)
 
@@ -383,3 +379,13 @@ cor.test(J$Pta_r, J$composite)
 cor.test(J$gr_r, J$composite)
 cor.test(J$ratio_green, J$SVI)
 ```
+
+##Results 
+
+###Census tract vs Neighborhood  
+```{r Tables}
+Neigh_ZTable
+Cen_ZTable
+```
+###MAPS 
+![Caption for the picture.](/GIS_Viz/.png)
