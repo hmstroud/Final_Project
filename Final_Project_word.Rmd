@@ -1,14 +1,15 @@
 ---
-title: "Final_Project_Exploratory_SV_Analysis "
+title: "Final_worddoc"
 author: "Hannah Stroud"
-date: "November 25, 2018"
+date: "December 18, 2018"
 output: word_document
-always_allow_html:yes 
+always_allow_html: yes
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 ```
+
 #Introduction
 My thesis research revolves around climate justice and how to assess and evaluate the impacts of climate change adaptation on socially vulnerable populations. My field of research started when social justice advocates began noticing and proving statistically significant difference between the location of hazardous waste sites in communities of color compared to white communities (Mohai & Saha, 2006). Studies of spatial analysis supporting or refuting these claims of environmental justice differed by what unit of scale they analyzed, and what areas they included in their study (Mohai, Pellow & Roberts, 2009). Zimmerman also argues that scale plays an important role in determining injustice, as he argues that a number of scales should be explored simultaneously and a sensitivity analysis should be run to see if the scales are different in equity implications (1990). The filed has since expanded to look at various social and economic characteristics and their exposure to environmental hazards. Climate Justice looks specifically at how these vulnerable populations are affected by Climate Change and how adaptation can begin to right past inequities and injustices. Based off the work of these authors, and that fact I am still waiting to collect my own data, I conducted a social vulnerability analysis of the city of Boston at two scales and explored correlation between vulnerable populations and aspects of climate change. I conducted this analysis because I wanted to know:  
 * Where are Boston's vulnerable populations? Does examining different levels of scale change where the most vulnerable spots are?  
@@ -34,8 +35,8 @@ library(ggplot2)
 library(tidyr)
 library(broom)
 library(gridExtra)
-library(flextable)
 library(patchwork)
+library(flextable)
 theme_set(theme_bw())
 ```
 
@@ -127,7 +128,7 @@ Negative scores denote neighborhoods under the average of vulnerable population 
 ```{r}
 SoVI_neighborhood %>% 
   select(Neighborhood, Per_POC, Per_Med, Per_child, Per_eld, Per_LI, Per_Lmt_Eng, Per_Dis) %>%
-  flextable()
+ flextable()
 ```
 
 ```{r Significant Neighborhood }
@@ -144,7 +145,7 @@ Top_NPOC <- filter(SoVI_neighborhood, ZPOC >= 1.5)
 Neigh_ZTable <- rbind(Top_NMed, Top_NChild, Top_NDis, Top_NPOC, Top_NLEP, Top_NLI, Top_NEld) %>%
   select(Neighborhood_full,ZMed, ZChild, ZDis, ZPOC, ZLEP, ZLowI, ZEld, composite) %>%
     arrange(Neighborhood_full) %>%
-  flextable()
+ flextable()
 ```
 Because there is a smaller range in neighborhood values, instead of going with a p-value of 0.05, I increased mine to 0.075. The p-value for Z=1.5 was found by pnorm(1.5, lower.tail=FALSE). This only applies to the characteristics that have a normal distribution: LEP, LowI, Med, Dis and eld. Their distributions are shown below.  
 
@@ -193,7 +194,7 @@ Top_Child <- filter(CRB_Attributes, ZChild >= 1.65)
 Cen_ZTable <- rbind(Top_Med, Top_Child, Top_Dis, Top_POC, Top_LEP, Top_LI, Top_Eld) %>% 
   select(Neighborhood_full,ZMed, ZDis, ZLEP, ZLowI, ZEld, ZPOC, ZChild) %>% 
   arrange(Neighborhood_full) %>% 
-   flextable()
+ flextable()
 ```
 ##Correlation  
 I obtained a Social Vulnerability Index (SVI) score from NOAA, at the census tract level. I then ran correlations between the SVI score and each of the seven characteristics to understand how much they were weighted in the SVI score. 6 of the 7 characteristics had significant correlations, though medical illness has a small negative correlation. The characteristics are important to the SVI but there are more factors they are factoring in.   
