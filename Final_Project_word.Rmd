@@ -128,7 +128,7 @@ Negative scores denote neighborhoods under the average of vulnerable population 
 ```{r}
 SoVI_neighborhood %>% 
   select(Neighborhood, Per_POC, Per_Med, Per_child, Per_eld, Per_LI, Per_Lmt_Eng, Per_Dis) %>%
- flextable()
+ flextable() %>%  htmltools_value()
 ```
 
 ```{r Significant Neighborhood }
@@ -145,7 +145,7 @@ Top_NPOC <- filter(SoVI_neighborhood, ZPOC >= 1.5)
 Neigh_ZTable <- rbind(Top_NMed, Top_NChild, Top_NDis, Top_NPOC, Top_NLEP, Top_NLI, Top_NEld) %>%
   select(Neighborhood_full,ZMed, ZChild, ZDis, ZPOC, ZLEP, ZLowI, ZEld, composite) %>%
     arrange(Neighborhood_full) %>%
- flextable()
+ flextable() %>% htmltools_value()
 ```
 Because there is a smaller range in neighborhood values, instead of going with a p-value of 0.05, I increased mine to 0.075. The p-value for Z=1.5 was found by pnorm(1.5, lower.tail=FALSE). This only applies to the characteristics that have a normal distribution: LEP, LowI, Med, Dis and eld. Their distributions are shown below.  
 
@@ -194,7 +194,7 @@ Top_Child <- filter(CRB_Attributes, ZChild >= 1.65)
 Cen_ZTable <- rbind(Top_Med, Top_Child, Top_Dis, Top_POC, Top_LEP, Top_LI, Top_Eld) %>% 
   select(Neighborhood_full,ZMed, ZDis, ZLEP, ZLowI, ZEld, ZPOC, ZChild) %>% 
   arrange(Neighborhood_full) %>% 
- flextable()
+ flextable() %>% htmltools_value()
 ```
 ##Correlation  
 I obtained a Social Vulnerability Index (SVI) score from NOAA, at the census tract level. I then ran correlations between the SVI score and each of the seven characteristics to understand how much they were weighted in the SVI score. 6 of the 7 characteristics had significant correlations, though medical illness has a small negative correlation. The characteristics are important to the SVI but there are more factors they are factoring in.   
@@ -219,7 +219,7 @@ ct_m <- cor.test(combined$Per_Med, combined$SOVI0610MA) %>% tidy() %>% mutate(na
 ct_eld <- cor.test(combined$Per_eld, combined$SOVI0610MA) %>% tidy() %>% mutate(name= "Eld")
 
 rbind(ct_p, ct_c, ct_d, ct_LI, ct_LEP, ct_m, ct_eld) %>%
-  flextable()
+  flextable() %>% htmltools_value()
 ```
 
 ```{r Visualizing Correlations, warning=FALSE, message=FALSE}
@@ -386,7 +386,30 @@ Neigh_ZTable
 Cen_ZTable
 ```
 ###MAPS 
-![Census Scale- Medical Illness](./GIS_Viz/Z_Med.jpg)
-![Neighborhood Scale- Medical Illness](./GIS_Viz/Z_Med_N.jpg)
+![Neighborhood Scale- SVI](./GIS_Viz/SVI_N.jpg) 
 
+![Census Scale- SVI](./GIS_Viz/SVI_Composite.jpg)
 
+![Scale Comparison- Medical Illness, People of Color, Low Income, Limited Enlgish](./GIS__Viz/comparison_4traits.png)
+
+![Total Open Green Space](./GIS_Viz/TotalGreenSpace.jpg)
+
+By looking at the visualized data and the tables of Z-scores, it is clear that different conclusions can be drawn depending on scale of analysis. At the census tract level, we see that neighborhood boundaries don't contain or divide vulnerable groups. Rather they are in smaller clusters within neighborhoods. The Z table of significantly different vulnerable populations show us that census tracts in neighborhoods that were not significantly different at the neighborhood scale.
+
+Roxbury is one of the neighborhoods that continues to see hot spots of vulnerability at both levels of analysis. Additionally, by breaking down the traits of social vulnerability, we can see that some areas are vulnerable for different reasons, and some vulnerable traits don’t correlate. Knowing the dispersion of vulnerability, and what makes each community vulnerable is crucial for planning climate change adaptation. Limited English and low income groups require different tactics from emergency planners and city officials when planning and carrying through climate change adaptation.  
+
+####References  
+Cutter, S. L., Boruff, B. J., & Shirley, W. L. (2003). Social Vulnerability to Environmental Hazards. Social Science Quarterly, 84(2), 242–261. https://doi.org/10.1111/1540-6237.8402002  
+Mohai, P., Pellow, D., & Roberts, J. T. (2009). Environmental Justice. Annual Review of Environment and Resources, 405–430. https://doi.org/10.1146/annurev-environ-082508-094348   
+Mohai, P., & Saha, R. (2006). Reassessing Racial and Socioeconomic Disparities in Environmental Justice. Demography, 43(2), 383- 399. https://link.springer.com/content/pdf/10.1353/dem.2006.0017.pdf  
+Zimmerman, R. (1993). Social Equity and Environmental Risk. Risk Analysis, 13(6), 649–666.  
+GIS data  
+ “Climate Ready Boston Social Vulnerability”. Boston GIS. 
+ https://www.arcgis.com/home/item.html?id=34f2c48b670d4b43a617b1540f20efe3  
+
+“Climate Smart Cities Boston Metro Mayors”. The Trust for Public Land. https://web.tplgis.org/metromayors_csc/  
+
+ “Open Space”. Boston GIS. http://bostonopendata-boston.opendata.arcgis.com/datasets/2868d370c55d4d458d4ae2224ef8cddd_7  
+
+“Social Vulnerbility Index for the U.S. Coastal States based on 2010 Census Tracts”. Nataional Oceanic and Atmospheric Administration. https://catalog.data.gov/dataset/social-vulnerability-index-sovi-for-the-u-s-coastal-states-based-on-the-2010-census-tracts  
+ 
